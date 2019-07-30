@@ -2,8 +2,9 @@ alphabet = "abcdefghijklmnopqrstuvwxyz"
 partialOne = ""
 partialTwo = ""
 newAlphabet = ""
+Message = "wpau iwt ephhldgs udg iwt uxghi rajt xh tctgvxots"
 Message = input("Please enter a message to encrypt:").lower()
-key = int(input("Enter Key to Shift")).lower()
+key = int(input("Enter Key to Shift"))
 if key == 0:
     newAlphabet = alphabet
 elif key > 0:
