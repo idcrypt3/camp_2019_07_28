@@ -7,3 +7,11 @@ def decode(message):
         attempt = ""
         for i in range(len(message)):
             index = alphabet.find(message[i])
+            if index < 0:
+                attempt += message[i]
+            else:
+                attempt += newAlphabet[index]
+        print("Key: " + str(key) + "-" + attempt)
+
+
+decode(message)
