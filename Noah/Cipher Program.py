@@ -1,6 +1,6 @@
 print("Project Name: Prometheus")
 prometheuscode = input("ENTER PASSWORD:")
-if passcode == "H@11eluj4h!":
+if prometheuscode == "H@11eluj4h!":
     print("C'est bien.")
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     partialOne = ""
