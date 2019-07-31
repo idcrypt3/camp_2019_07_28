@@ -41,9 +41,39 @@ def sign_message(message):
     return [r, s]
 
 
+def verify(message, signature):
+    r = signature[0]
+    s = signature[1]
+    for sig in signature:
+        if sig < 0 or sig > q:
+            print("Invalid signature")
+    w = mod_inv(s, q)
+    u1 = (new_hash(message) * w) % q
+    u2 = (r * w) % q
+    v = (((g ** u1) * (y ** u2)) % p) % q
+    print(v)
+    if v == r:
+        print("Signature is valid!")
+    else:
+        print("Message is compromised!")
+
+
 q = 191
 p = 383
 h = 2
 g = int(h ** ((p - 1) / q)) % p
 x = 29
 y = (g ** x) % p
+
+message = "Hello World"
+signature = sign_message(message)
+print("Signature")
+print("r: " + str(signature[0]))
+print("s: " + str(signature[1]))
+
+message1 = "Hello world"
+message2 = "Hello World"
+print("Verify message 1")
+verify(message1, signature)
+print("Verify message 2")
+verify(message2, signature)
