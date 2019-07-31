@@ -21,7 +21,7 @@ def find_shared_key(private_key, public_key):
 
 alice_private_key = 5
 bob_private_key = 7
-alice_message = "Hello Bob"
+alice_message = "food"
 
 public_base = 8
 public_modulus = 29
