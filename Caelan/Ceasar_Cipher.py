@@ -1,5 +1,5 @@
-def cesar_encrypt(message, key):
-    key = key % 26
+def Fred(message, key):
+
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     partialOne = ""
     partialTwo = ""
@@ -12,12 +12,11 @@ def cesar_encrypt(message, key):
         partialTwo = alphabet[key:]
         newAlphabet = partialTwo + partialOne
     else:
-        partialOne = alphabet[:(26+key)]
-        partialTwo = alphabet[(26+key):]
+        partialOne = alphabet[:(26 + key)]
+        partialTwo = alphabet[(26 + key):]
         newAlphabet = partialTwo + partialOne
 
     newMessage = ""
-
     for i in range(0, len(message)):
         index = alphabet.find(message[i])
         if index < 0:
@@ -25,9 +24,14 @@ def cesar_encrypt(message, key):
         else:
             newMessage += newAlphabet[index]
     return newMessage
+
+
 def main():
-    message = input("Please enter a secret message: ").lower()
-    key = int(input("Key: "))
-    print(cesar_encrypt(message, key))
-if __name__ == "__main__":
-    main()
+    message = input("Please enter a secret message:").lower()
+    key = int(input("Please enter a number to shift by:"))
+
+    encrypt_message = Fred(message, key)
+    print(encrypt_message)
+
+    if __name__ == ("__main__"):
+        main()
