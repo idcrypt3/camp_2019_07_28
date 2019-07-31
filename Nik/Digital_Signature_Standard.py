@@ -81,8 +81,8 @@ y = (g ** x) % p
 message = "poop yeah yeah"
 signature = sign_message(message)
 print("Signature")
- print("r: " + str(signature[0]))
- print("s: " + str(signature[1]))
+print("r: " + str(signature[0]))
+print("s: " + str(signature[1]))
 
 message1 = "oh no"
 message2 = "He"
