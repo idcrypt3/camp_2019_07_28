@@ -118,7 +118,7 @@ def decrypt():
             decrypted = block_rebuild(chunk_list)
             break
         elif cypher == 3:
-            shared_key = dh_shared_key(data[1], dh_private_key)
+            shared_key = dh_shared_key(dh_private_key, data[1])
             decrypted = dh_unshift(data[0], shared_key)
             break
         elif cypher == 0:
