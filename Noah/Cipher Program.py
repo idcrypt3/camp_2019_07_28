@@ -48,7 +48,7 @@ else:
     while malfunction:
         print("MALFUNCTION")"""
 
-def pad_message(message, block_size=4):
+"""def pad_message(message, block_size=4):
     message_list = []
     chunk = 0
     block_count = len(message) // block_size + 1
@@ -70,16 +70,16 @@ def rebuild_message(message_list, block_size=4):
             number = (chunk >> (8 * (block_size - 1 - c))) % 2**8
             message += chr(number)
     return message
-"""def apply_rotate(message_list, key, block_size=4):
-    cipher_list = []
-    bit_max = block_size * 8
-    for i in range(len(message_list)):
-        chunk = message_list[i]
-        carry = chunk % 2**key
-        carry = carry <<(bit_max - key)
-        cipher = (chunk >> key) + carry
-        cipher_list.append(cipher)
-        return cipher_list"""
+# def apply_rotate(message_list, key, block_size=4):
+    # cipher_list = []
+    # bit_max = block_size * 8
+    # for i in range(len(message_list)):
+        # chunk = message_list[i]
+        # carry = chunk % 2**key
+        # carry = carry <<(bit_max - key)
+        # cipher = (chunk >> key) + carry
+        # cipher_list.append(cipher)
+        # return cipher_list
 plaintext = input("Please enter input for the block cipher:")
 key = 10
 text_list = pad_message(plaintext)
@@ -87,4 +87,20 @@ print("text_list: {}".format(text_list))
 #cipher_list = apply_rotate(text_list, key)
 #print("cipher_list: {}".format(cipher_list))
 cipher = rebuild_message(text_list)
-print("decoded: {}".format(cipher))
+print("decoded: {}".format(cipher))"""
+
+phone_book = [
+    ("Alice", 4082553555),
+    ("", 0000000000),
+    ("Diane", 9830978345),
+    ("Bob", 6503879023),
+    ("", 0000000000),
+    ("Eve", 7642398541),
+    ("Charlie", 5052358753)
+]
+max_size = 19
+while len(phone_book) < max_size - 1:
+    phone_book.append(("", 0000000000))
+phone_book.append(("Steven", 1420573857))
+search+name = input("Lookup which number?")
+
