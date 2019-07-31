@@ -7,6 +7,7 @@ from cesar_idiot import cesar_encrypt as shift_cypher
 from Discriptive_name_of_the_block_cipher import pad_message as block_pad, rebuild_message as block_rebuild
 from Discriptive_name_of_the_block_cipher import apply_rotate as block_shift, undo_rotate as block_unshift
 from Diffe_Hellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
+from SHASH-256 import
 
 # here I set the private key used in Diffie-Hellman encryptions. Feel free to change it.
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
