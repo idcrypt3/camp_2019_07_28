@@ -12,6 +12,7 @@ if key == 0:
 elif key > 0:
     partialOne = alphabet[:key]
     partialTwo = alphabet[key:]
+    newAlphabet = partialTwo + partialOne
 else:
     partialOne = alphabet[:(26 + key)]
     partialTwo = alphabet[(26 + key):]
@@ -20,8 +21,8 @@ else:
 newMessage = ""
 for i in range(0,len(message)):
     index = alphabet.find(message[i])
-    if index < 0
+    if index < 0:
         newMessage += message[i]
     else:
         newMessage += newAlphabet[index]
-    return newMessage
+print(newMessage)

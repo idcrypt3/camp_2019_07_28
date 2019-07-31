@@ -16,6 +16,37 @@ dh_mod = 29
 dh_private_key = 49
 dh_public_key = dh_base ** dh_private_key % dh_mod
 
+csi = "\x1b["
+csi2 = "\x1b"
+color = "34m"
+
+colored_text1 = csi + color + text1
+colored_text2 = csi + color + text2
+colored_text3 = csi + color + text3
+colored_text4 = csi + color + text4
+colored_text5 = csi + color + text5
+colored_text6 = csi + color + text6
+colored_text7 = csi + color + text7
+colored_text8 = csi + color + text8
+colored_text9 = csi + color + text9
+colored_text10 = csi + color + text10
+colored_text11 = csi + color + text11
+colored_text12 = csi + color + text12
+colored_text13 = csi + color + text13
+colored_text14 = csi + color + text14
+colored_text15 = csi + color + text15
+colored_text16 = csi + color + text16
+colored_text17 = csi + color + text17
+colored_text18 = csi + color + text18
+colored_text19 = csi + color + text19
+colored_text20 = csi + color + text20
+colored_text21 = csi + color + text21
+colored_text22 = csi + color + text22
+colored_text23 = csi + color + text23
+colored_text24 = csi + color + text24
+colored_text25 = csi + color + text25
+colored_text26 = csi + color + text26
+
 
 def main():
     # Feel free to change this intro msg to whatever you want
@@ -178,6 +209,7 @@ def get_key():
 # This line automatically runs the main def when you start the program.
 if __name__ == "__main__":
     main()
+
 
 # Ideas for new features:
 # - Include your name or contact info in the comments and/or opening scroll.
