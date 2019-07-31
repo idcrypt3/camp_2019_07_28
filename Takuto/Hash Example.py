@@ -4,3 +4,4 @@ def new_hash(message):
         digest += ord(c)
         digest = digest % 256
     return digest
+
