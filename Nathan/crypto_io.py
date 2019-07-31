@@ -59,7 +59,8 @@ def encrypt():
             continue
 
         cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
+            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease s"
+            "elect a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
@@ -100,7 +101,8 @@ def decrypt():
 
     while True:
         cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
+            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a"
+            " cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
@@ -129,15 +131,15 @@ def decrypt():
 
 
 def get_decrypt_input():
-    localMsgs = os.listdir("msgs")
-    for i in range(len(localMsgs)):
+    localmsgs = os.listdir("msgs")
+    for i in range(len(localmsgs)):
         n = i + 1  # '0' is the choice for manual input, so we offset the count by +1
         padding = " "
         if n <= 99:
             padding += " "
         if n <= 9:
             padding += " "
-        print("{}{}: {}".format(n, padding, localMsgs[i]))
+        print("{}{}: {}".format(n, padding, localmsgs[i]))
     print()
 
     while True:
@@ -146,18 +148,18 @@ def get_decrypt_input():
         try:
             choice = int(choice)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
+            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localmsgs)))
             continue
 
         if choice == 0:
             msg = input("Manually enter the encrypted message: ").strip()
             break
-        elif choice <= len(localMsgs):
-            with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
+        elif choice <= len(localmsgs):
+            with io.open("msgs/{}".format(localmsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
             break
         else:
-            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
+            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localmsgs)))
 
     key = get_key()
     return msg, key
