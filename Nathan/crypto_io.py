@@ -1,22 +1,21 @@
-import os, io
+import os
+import io
 
 # uncomment the 3 lines below and replace the names of your files (do not include .py) and function defs
 # leave "as name" as-is; this renames your functions so they are all compatible with this program,
 # regardless of what you named them
-from cesar_idiot import cesar_encrypt as shift_cypher
-from Discriptive_name_of_the_block_cipher import pad_message as block_pad, rebuild_message as block_rebuild
-from Discriptive_name_of_the_block_cipher import apply_rotate as block_shift, undo_rotate as block_unshift
-from Diffe_Hellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
+from Ceaser_Cipher import ceaser_cipher as shift_cypher
+from Block_Cipher import pad_message as block_pad, rebuild_message as block_rebuild
+from Block_Cipher import apply_rotate as block_shift, undo_rotation as block_unshift
+from Diffie_Hellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
 
 # here I set the private key used in Diffie-Hellman encryptions. Feel free to change it.
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
 dh_base = 8
 dh_mod = 29
-dh_private_key = int(input("What is your private key?: "))
-for _ in range(100):
-    print("")
+dh_private_key = 49
 dh_public_key = dh_base ** dh_private_key % dh_mod
-print("Your Public Key is: " + str(dh_public_key))
+
 
 def main():
     # Feel free to change this intro msg to whatever you want
@@ -60,7 +59,8 @@ def encrypt():
             continue
 
         cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
+            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease s"
+            "elect a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
@@ -101,7 +101,8 @@ def decrypt():
 
     while True:
         cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
+            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a"
+            " cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
@@ -118,7 +119,7 @@ def decrypt():
             decrypted = block_rebuild(chunk_list)
             break
         elif cypher == 3:
-            shared_key = dh_shared_key(dh_private_key, data[1])
+            shared_key = dh_shared_key(data[1], dh_public_key)
             decrypted = dh_unshift(data[0], shared_key)
             break
         elif cypher == 0:
@@ -130,15 +131,15 @@ def decrypt():
 
 
 def get_decrypt_input():
-    localMsgs = os.listdir("msgs")
-    for i in range(len(localMsgs)):
+    localmsgs = os.listdir("msgs")
+    for i in range(len(localmsgs)):
         n = i + 1  # '0' is the choice for manual input, so we offset the count by +1
         padding = " "
         if n <= 99:
             padding += " "
         if n <= 9:
             padding += " "
-        print("{}{}: {}".format(n, padding, localMsgs[i]))
+        print("{}{}: {}".format(n, padding, localmsgs[i]))
     print()
 
     while True:
@@ -147,18 +148,18 @@ def get_decrypt_input():
         try:
             choice = int(choice)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
+            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localmsgs)))
             continue
 
         if choice == 0:
             msg = input("Manually enter the encrypted message: ").strip()
             break
-        elif choice <= len(localMsgs):
-            with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
+        elif choice <= len(localmsgs):
+            with io.open("msgs/{}".format(localmsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
             break
         else:
-            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
+            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localmsgs)))
 
     key = get_key()
     return msg, key

@@ -1,5 +1,7 @@
 alphabet = "abcdefghijklmnopqrstuvwxyz"
-message = "wpau iwt ephhldgs udg iwt uxghi rajt xh tctgvxots"
+#message = "wpau iwt ephhldgs udg iwt uxghi rajt xh tctgvxots"
+rmessage = input("Encrypted message: ")
+message = rmessage.lower()
 
 def decode(message):
     for key in range(len(alphabet)):
@@ -9,8 +11,8 @@ def decode(message):
             index = alphabet.find(message[i])
             if index < 0:
                 attempt += message[i]
-            else:-
+            else:
                 attempt += newAlphabet[index]
-        print("Key: " + str((key - 26) * -1) + " - " + attempt)
+        print("Key: " + str((key * -1) + 26) + " - " + attempt)
 
 decode(message)
