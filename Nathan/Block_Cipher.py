@@ -48,12 +48,17 @@ def undo_rotation(cipher_list, key, block_size=4):
     return message_list
 
 
-plaintext = "iD Tech Camps"
-key = 10
-text_list = pad_message(plaintext)
-cipher_list = apply_rotate(text_list, key)
-cipher = rebuild_message(cipher_list)
-print(cipher)
-message_list = undo_rotation(cipher_list, key)
-message = rebuild_message(message_list)
-print(message)
+def main():
+    plaintext = "iD Tech Camps"
+    key = 10
+    text_list = pad_message(plaintext)
+    cipher_list = apply_rotate(text_list, key)
+    cipher = rebuild_message(cipher_list)
+    print(cipher)
+    message_list = undo_rotation(cipher_list, key)
+    message = rebuild_message(message_list)
+    print(message)
+
+
+if __name__ == "__main__":
+    main()
