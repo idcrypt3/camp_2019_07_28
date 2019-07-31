@@ -43,13 +43,15 @@ def undo_rotate(cipher_list, key, block_size=4):
         number = (chunk >> (bit_max - key)) + carry
         message_list.append(number)
     return message_list
-
-plaintext = input("Message Input: ")
-key = int(input("key: "))
-text_list = pad_message(plaintext)
-cipher_list = apply_rotate(text_list, key)
-cipher = rebuild_message(cipher_list)
-print(cipher)
-message_list = undo_rotate(cipher_list, key)
-message = rebuild_message(message_list)
-print(message)
+def main():
+    plaintext = input("Message Input: ")
+    key = int(input("key: "))
+    text_list = pad_message(plaintext)
+    cipher_list = apply_rotate(text_list, key)
+    cipher = rebuild_message(cipher_list)
+    print(cipher)
+    message_list = undo_rotate(cipher_list, key)
+    message = rebuild_message(message_list)
+    print(message)
+if __name__ == "__main__":
+    main()

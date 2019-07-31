@@ -4,3 +4,4 @@ git pull
 git push
 git reset
 git add Nathan/"File Name"
+git add --all
