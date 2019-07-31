@@ -1,4 +1,5 @@
 def cesar_encrypt(message, key):
+    key = key % 26
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     partialOne = ""
     partialTwo = ""
