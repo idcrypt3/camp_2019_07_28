@@ -23,7 +23,7 @@ def rebuild_message(message_list, block_size=4):
         for c in range(block_size):
             number = (chunk >> (8 * (block_size - 1 - c ))) % 2**8
             message += chr(number)
-        return message
+    return message
 def apply_shift(message_list, key, block_size=4):
     cipher_list = []
     bit_max = block_size*8
@@ -39,9 +39,9 @@ def undo_shift(cipher_list, key, block_size=4):
     bit_max = block_size *8
     for i in range(len(cipher_list)):
         chunk = cipher_list[i]
-        carry = chunk % (2**(bit_max - key))
+        carry = chunk % (2 **(bit_max - key))
         carry = carry << key
-        number = (chunk >> (bit_max - key))+ carry
+        number = (chunk >> (bit_max - key)) + carry
         message_list.append(number)
     return message_list
 
