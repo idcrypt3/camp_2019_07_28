@@ -1,5 +1,6 @@
 alphabet = "abcdefghijklmnopqrstuvwxyz"
-message = "wpau iwt ephhldgs udg iwt uxghi rajt xh tctgvxots"
+#message = "wpau iwt ephhldgs udg iwt uxghi rajt xh tctgvxots"
+message = input("Encrypted message: ")
 
 def decode(message):
     for key in range(len(alphabet)):
