@@ -17,43 +17,53 @@ dh_private_key = 49
 dh_public_key = dh_base ** dh_private_key % dh_mod
 
 csi = "\x1b["
-csi2 = "\x1b"
-color = "34m"
+colorw = "30m"
+colorr = "31m"
+colorg = "34m"
 
-colored_text1 = csi + color + text1
-colored_text2 = csi + color + text2
-colored_text3 = csi + color + text3
-colored_text4 = csi + color + text4
-colored_text5 = csi + color + text5
-colored_text6 = csi + color + text6
-colored_text7 = csi + color + text7
-colored_text8 = csi + color + text8
-colored_text9 = csi + color + text9
-colored_text10 = csi + color + text10
-colored_text11 = csi + color + text11
-colored_text12 = csi + color + text12
-colored_text13 = csi + color + text13
-colored_text14 = csi + color + text14
-colored_text15 = csi + color + text15
-colored_text16 = csi + color + text16
-colored_text17 = csi + color + text17
-colored_text18 = csi + color + text18
-colored_text19 = csi + color + text19
-colored_text20 = csi + color + text20
-colored_text21 = csi + color + text21
-colored_text22 = csi + color + text22
-colored_text23 = csi + color + text23
-colored_text24 = csi + color + text24
-colored_text25 = csi + color + text25
-colored_text26 = csi + color + text26
+text1 = "Hello iD Campers, Parents, and Staff!"
+text2 ="Welcome to the iD Cryptography Package, cryptoIO!!"
+text3 ="Here you can encrypt messages and save them for others to read."
+text4 ="But they will only be able to decrypt them if you (remember and) share the secret keys!"
+
+
+colored_text1 = csi + colorw + text1
+colored_text2 = csi + colorw + text2
+colored_text3 = csi + colorw + text3
+colored_text4 = csi + colorw + text4
+colored_text5 = csi + colorw
+colored_text6 = csi + colorr
+colored_text7 = csi + colorw
+colored_text8 = csi + colorw
+colored_text9 = csi + colorr
+colored_text10 = csi + colorg
+colored_text11 = csi + colorw
+colored_text12 = csi + colorr
+colored_text13 = csi + colorw
+colored_text14 = csi + colorr
+colored_text15 = csi + colorg
+colored_text16 = csi + colorw
+colored_text17 = csi + colorw
+colored_text18 = csi + colorw
+colored_text19 = csi + colorr
+colored_text20 = csi + colorw
+colored_text21 = csi + colorw
+colored_text22 = csi + colorr
+colored_text23 = csi + colorw
+colored_text24 = csi + colorr
+colored_text25 = csi + colorw
+colored_text26 = csi + colorr  
+
+
+def prgreen(skk): print("\033[1;32;00m{}".format(skk))
 
 
 def main():
     # Feel free to change this intro msg to whatever you want
-    print("Hello iD Campers, Parents, and Staff!")
-    print("Welcome to the iD Cryptography Package, cryptoIO!!")
-    print("Here you can encrypt messages and save them for others to read.")
-    print("But they will only be able to decrypt them if you (remember and) share the secret keys!")
+    print(text1)
+    print(text2)
+    print(text3)
+    print(text4)
 
     # infinite loop runs until the user quits
     while True:
