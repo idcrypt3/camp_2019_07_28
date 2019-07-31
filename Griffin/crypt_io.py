@@ -7,7 +7,7 @@ from cesar_idiot import cesar_encrypt as shift_cypher
 from Discriptive_name_of_the_block_cipher import pad_message as block_pad, rebuild_message as block_rebuild
 from Discriptive_name_of_the_block_cipher import apply_rotate as block_shift, undo_rotate as block_unshift
 from Diffe_Hellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
-from SHASH-256 import
+from SHASH import do as find_hash
 
 # here I set the private key used in Diffie-Hellman encryptions. Feel free to change it.
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
@@ -87,6 +87,8 @@ def encrypt():
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
+    with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
+        shash.write(find_hash(data[0]))
     print("Your message was successfully encrypted!\n")
 
 
@@ -126,6 +128,10 @@ def decrypt():
             return
 
     print("The decrypted message is:\n'{}'".format(decrypted))
+    if find_hash(decrypted) == data[2]:
+        print("Message Valid!")
+    else:
+        print("Something is wrong\nEither you have not successfully decrypted it\nor the file is not authentic.")
 
     return
 
@@ -157,12 +163,14 @@ def get_decrypt_input():
         elif choice <= len(localMsgs):
             with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
+            with io.open("hshs/_hash_{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as ofile:
+                ohash = ofile.read()
             break
         else:
             print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
 
     key = get_key()
-    return msg, key
+    return msg, key, ohash
 
 
 def get_key():

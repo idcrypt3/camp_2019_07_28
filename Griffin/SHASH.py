@@ -80,8 +80,10 @@ def do(message):
     padded_message = pad_message(message)
     hashed_message = SHA256(padded_message)
     return hex(hashed_message)
-
-msg = input("Input: ")
-padded_msg = pad_message(msg)
-hashed_msg = SHA256(padded_msg)
-print(hex(hashed_msg))
+def main():
+    msg = input("Input: ")
+    padded_msg = pad_message(msg)
+    hashed_msg = SHA256(padded_msg)
+    print(hex(hashed_msg))
+if __name__ == "__main__":
+    main()
