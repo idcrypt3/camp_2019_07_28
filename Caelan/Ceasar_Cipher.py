@@ -1,4 +1,5 @@
-def shift_cipher(message, key):
+def Fred(message, key):
+
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     partialOne = ""
     partialTwo = ""
@@ -26,10 +27,11 @@ def shift_cipher(message, key):
 
 
 def main():
-    message = input("Please enter a secret message:")
-    key = int(input("pass"))
-    encrypted = shift_cipher(message, key)
-    print(encrypted)
+    message = input("Please enter a secret message:").lower()
+    key = int(input("Please enter a number to shift by:"))
 
-if __name__ == "__main__":
-    main()
+    encrypt_message = Fred(message, key)
+    print(encrypt_message)
+
+    if __name__ == ("__main__"):
+        main()

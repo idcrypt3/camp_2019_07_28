@@ -1,12 +1,11 @@
-import os
-import io
+import os, io
 
 # uncomment the 3 lines below and replace the names of your files (do not include .py) and function defs
 # leave "as name" as-is; this renames your functions so they are all compatible with this program,
 # regardless of what you named them
-from Ceaser_Cipher import ceaser_cipher as shift_cypher
-from Block_Cipher import pad_message as block_pad, rebuild_message as block_rebuild
-from Block_Cipher import apply_rotate as block_shift, undo_rotation as block_unshift
+from Ceasar_Cipher import Fred as shift_cypher
+from block_cipher import pad_message as block_pad, rebuild_message as block_rebuild
+from block_cipher import apply_shift as block_shift, undo_shift as block_unshift
 from Diffie_Hellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
 
 # here I set the private key used in Diffie-Hellman encryptions. Feel free to change it.
@@ -16,54 +15,13 @@ dh_mod = 29
 dh_private_key = 49
 dh_public_key = dh_base ** dh_private_key % dh_mod
 
-csi = "\x1b["
-colorw = "30m"
-colorr = "31m"
-colorg = "34m"
-
-text1 = "Hello iD Campers, Parents, and Staff!"
-text2 ="Welcome to the iD Cryptography Package, cryptoIO!!"
-text3 ="Here you can encrypt messages and save them for others to read."
-text4 ="But they will only be able to decrypt them if you (remember and) share the secret keys!"
-
-
-colored_text1 = csi + colorw + text1
-colored_text2 = csi + colorw + text2
-colored_text3 = csi + colorw + text3
-colored_text4 = csi + colorw + text4
-colored_text5 = csi + colorw
-colored_text6 = csi + colorr
-colored_text7 = csi + colorw
-colored_text8 = csi + colorw
-colored_text9 = csi + colorr
-colored_text10 = csi + colorg
-colored_text11 = csi + colorw
-colored_text12 = csi + colorr
-colored_text13 = csi + colorw
-colored_text14 = csi + colorr
-colored_text15 = csi + colorg
-colored_text16 = csi + colorw
-colored_text17 = csi + colorw
-colored_text18 = csi + colorw
-colored_text19 = csi + colorr
-colored_text20 = csi + colorw
-colored_text21 = csi + colorw
-colored_text22 = csi + colorr
-colored_text23 = csi + colorw
-colored_text24 = csi + colorr
-colored_text25 = csi + colorw
-colored_text26 = csi + colorr  
-
-
-def prgreen(skk): print("\033[1;32;00m{}".format(skk))
-
 
 def main():
     # Feel free to change this intro msg to whatever you want
-    print(text1)
-    print(text2)
-    print(text3)
-    print(text4)
+    print("Hello iD Campers, Parents, and Staff!")
+    print("Welcome to the iD Cryptography Package, cryptoIO!!")
+    print("Here you can encrypt messages and save them for others to read.")
+    print("But they will only be able to decrypt them if you (remember and) share the secret keys!")
 
     # infinite loop runs until the user quits
     while True:
@@ -100,8 +58,7 @@ def encrypt():
             continue
 
         cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease s"
-            "elect a cypher (1, 2, or 3): ")
+            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
@@ -142,8 +99,7 @@ def decrypt():
 
     while True:
         cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a"
-            " cypher (1, 2, or 3): ")
+            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
@@ -160,7 +116,7 @@ def decrypt():
             decrypted = block_rebuild(chunk_list)
             break
         elif cypher == 3:
-            shared_key = dh_shared_key(data[1], dh_public_key)
+            shared_key = dh_shared_key(dh_private_key, data[1])
             decrypted = dh_unshift(data[0], shared_key)
             break
         elif cypher == 0:
@@ -172,15 +128,15 @@ def decrypt():
 
 
 def get_decrypt_input():
-    localmsgs = os.listdir("msgs")
-    for i in range(len(localmsgs)):
+    localMsgs = os.listdir("msgs")
+    for i in range(len(localMsgs)):
         n = i + 1  # '0' is the choice for manual input, so we offset the count by +1
         padding = " "
         if n <= 99:
             padding += " "
         if n <= 9:
             padding += " "
-        print("{}{}: {}".format(n, padding, localmsgs[i]))
+        print("{}{}: {}".format(n, padding, localMsgs[i]))
     print()
 
     while True:
@@ -189,18 +145,18 @@ def get_decrypt_input():
         try:
             choice = int(choice)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localmsgs)))
+            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
             continue
 
         if choice == 0:
             msg = input("Manually enter the encrypted message: ").strip()
             break
-        elif choice <= len(localmsgs):
-            with io.open("msgs/{}".format(localmsgs[choice - 1]), 'r', encoding="utf-8") as file:
+        elif choice <= len(localMsgs):
+            with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
             break
         else:
-            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localmsgs)))
+            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
 
     key = get_key()
     return msg, key
@@ -219,7 +175,6 @@ def get_key():
 # This line automatically runs the main def when you start the program.
 if __name__ == "__main__":
     main()
-
 
 # Ideas for new features:
 # - Include your name or contact info in the comments and/or opening scroll.
