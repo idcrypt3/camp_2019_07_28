@@ -18,10 +18,10 @@ dh_public_key = dh_base ** dh_private_key % dh_mod
 
 def main():
     # Feel free to change this intro msg to whatever you want
-    print("Hello iD Campers, Parents, and Staff!")
-    print("Welcome to the iD Cryptography Package, cryptoIO!!")
-    print("Here you can encrypt messages and save them for others to read.")
-    print("But they will only be able to decrypt them if you (remember and) share the secret keys!")
+    print("Hello peeps")
+    print("Welcome to yes")
+    print("Here you can encrypt messages.")
+    print("Please do not forget your key!")
 
     # infinite loop runs until the user quits
     while True:
@@ -54,11 +54,11 @@ def encrypt():
     while True:
         file_name = input("Please enter your message's name: ").strip()
         if "{}.txt".format(file_name) in os.listdir("msgs"):
-            print("Sorry, there is already a secret message with that name. Choose another.")
+            print("Sorry, there is already a secret message with that name.\n Choose another.")
             continue
 
         cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
+            "1   : Ceasar (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
@@ -168,7 +168,7 @@ def get_key():
             key = int(input("Please enter your secret key: "))
             break
         except ValueError:
-            print("The secret key should be a number. Try again. ")
+            print("The key should be a number. Try again. ")
     return key
 
 

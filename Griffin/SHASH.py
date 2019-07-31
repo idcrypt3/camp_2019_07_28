@@ -76,9 +76,12 @@ def SHA256(message):
         digest = digest << 32
         digest += hash_list[h]
     return digest
+def do(message):
+    padded_message = pad_message(message)
+    hashed_message = SHA256(padded_message)
+    return hex(hashed_message)
 
-
-msg = ""
+msg = input("Input: ")
 padded_msg = pad_message(msg)
 hashed_msg = SHA256(padded_msg)
 print(hex(hashed_msg))

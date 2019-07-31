@@ -1,13 +1,12 @@
-import os
-import io
+import os, io
 
 # uncomment the 3 lines below and replace the names of your files (do not include .py) and function defs
 # leave "as name" as-is; this renames your functions so they are all compatible with this program,
 # regardless of what you named them
-from Ceaser_Cipher import ceaser_cipher as shift_cypher
-from Block_Cipher import pad_message as block_pad, rebuild_message as block_rebuild
-from Block_Cipher import apply_rotate as block_shift, undo_rotation as block_unshift
-from Diffie_Hellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
+from YOUR_SHIFT_CYPHER_FILE import YOUR_SHIFT_DEF as shift_cypher
+from BLOCK_cIPHER import pad_message as block_pad, rebuild_message as block_rebuild
+from BLOCK_cIPHER import apply_shift as block_shift, undo_shift as block_unshift
+from YOUR_DIFF_HELL_FILE import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
 
 # here I set the private key used in Diffie-Hellman encryptions. Feel free to change it.
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
@@ -15,38 +14,6 @@ dh_base = 8
 dh_mod = 29
 dh_private_key = 49
 dh_public_key = dh_base ** dh_private_key % dh_mod
-
-csi = "\x1b["
-csi2 = "\x1b"
-color = "34m"
-
-colored_text1 = csi + color + text1
-colored_text2 = csi + color + text2
-colored_text3 = csi + color + text3
-colored_text4 = csi + color + text4
-colored_text5 = csi + color + text5
-colored_text6 = csi + color + text6
-colored_text7 = csi + color + text7
-colored_text8 = csi + color + text8
-colored_text9 = csi + color + text9
-colored_text10 = csi + color + text10
-colored_text11 = csi + color + text11
-colored_text12 = csi + color + text12
-colored_text13 = csi + color + text13
-colored_text14 = csi + color + text14
-colored_text15 = csi + color + text15
-colored_text16 = csi + color + text16
-colored_text17 = csi + color + text17
-colored_text18 = csi + color + text18
-colored_text19 = csi + color + text19
-colored_text20 = csi + color + text20
-colored_text21 = csi + color + text21
-colored_text22 = csi + color + text22
-colored_text23 = csi + color + text23
-colored_text24 = csi + color + text24
-colored_text25 = csi + color + text25
-colored_text26 = csi + color + text26
-
 
 def main():
     # Feel free to change this intro msg to whatever you want
@@ -57,12 +24,12 @@ def main():
 
     # infinite loop runs until the user quits
     while True:
-        print()  # newline for readability
+        print() # newline for readability
         choice = input("Type 1 to encrypt, 2 to decrypt, or 0 to quit: ")
-
-        try:
+        
+        try: 
             choice = int(choice)
-        except:
+        except: 
             print("Sorry, that is not a valid choice.")
             continue
 
@@ -78,7 +45,6 @@ def main():
             print("Sorry, '{}' is not a valid choice. Pick 1, 2, or 0.".format(choice))
             continue
 
-
 def encrypt():
     print("Preparing to encrypt...")
     data = get_encrypt_input()
@@ -88,10 +54,9 @@ def encrypt():
         if "{}.txt".format(file_name) in os.listdir("msgs"):
             print("Sorry, there is already a secret message with that name. Choose another.")
             continue
-
+        
         cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease s"
-            "elect a cypher (1, 2, or 3): ")
+            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
@@ -119,12 +84,10 @@ def encrypt():
         file.write(encrypted)
     print("Your message was successfully encrypted!\n")
 
-
 def get_encrypt_input():
     msg = input("Please enter your secret message: ")
     key = get_key()
     return msg, key
-
 
 def decrypt():
     print("Preparing to decrypt...")
@@ -132,8 +95,7 @@ def decrypt():
 
     while True:
         cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a"
-            " cypher (1, 2, or 3): ")
+            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
@@ -160,17 +122,16 @@ def decrypt():
 
     return
 
-
 def get_decrypt_input():
-    localmsgs = os.listdir("msgs")
-    for i in range(len(localmsgs)):
-        n = i + 1  # '0' is the choice for manual input, so we offset the count by +1
+    localMsgs = os.listdir("msgs")
+    for i in range(len(localMsgs)):
+        n = i + 1   # '0' is the choice for manual input, so we offset the count by +1
         padding = " "
         if n <= 99:
             padding += " "
         if n <= 9:
             padding += " "
-        print("{}{}: {}".format(n, padding, localmsgs[i]))
+        print("{}{}: {}".format(n, padding, localMsgs[i]))
     print()
 
     while True:
@@ -179,22 +140,21 @@ def get_decrypt_input():
         try:
             choice = int(choice)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localmsgs)))
+            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
             continue
 
         if choice == 0:
             msg = input("Manually enter the encrypted message: ").strip()
             break
-        elif choice <= len(localmsgs):
-            with io.open("msgs/{}".format(localmsgs[choice - 1]), 'r', encoding="utf-8") as file:
+        elif choice <= len(localMsgs):
+            with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
             break
         else:
-            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localmsgs)))
+            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
 
     key = get_key()
     return msg, key
-
 
 def get_key():
     while True:
@@ -205,11 +165,9 @@ def get_key():
             print("The secret key should be a number. Try again. ")
     return key
 
-
 # This line automatically runs the main def when you start the program.
 if __name__ == "__main__":
     main()
-
 
 # Ideas for new features:
 # - Include your name or contact info in the comments and/or opening scroll.

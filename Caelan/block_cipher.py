@@ -43,38 +43,12 @@ def undo_shift(cipher_list, key, block_size=4):
         number = (chunk >> (bit_max - key)) + carry
         message_list.append(number)
     return message_list
-message_list = undo_shift(cipher_list, key)
 
-plaintext = "abcdefGHIJKLMNOpqr!@#$%123"
+plaintext = "Anything"
 key = 20
 text_list = pad_message(plaintext)
 cipher_list = apply_shift(text_list, key)
-cipher = rebuild_message(cipher_list)
+cipher = undo_shift(cipher_list, key)
 print(cipher)
-message = rebuild_message(message_list)
+message = rebuild_message(cipher)
 print(message)
-
-def rebuild_message(message_list, block_size=4):
-    message = ""
-    for i in range(len(message_list)):
-        chunk = message_list[i]
-        for c in range(block_size):
-            number = (chunk >> (8 * (block_size - 1 - c))) % 2 ** 8
-            message += chr(number)
-
- def apply_rotate(message_list, key, block_size=4):
-     bit_max = block_size * 8
-     for i in range(len(message_list)):
-         chunk = message_list[i]
-
-carry = chunk % 2**key
-carry = carry << (bit_max - key)
-cipher = (chunk >> key) + carry
-cipher_list.append(cipher)
-
-plaintext = “iD Tech Camps!”
-key = 10
-text_list = pad_message(plaintext)
-cipher_list = apply_rotate(text_lists, key)
-cipher = rebuild_message(cipher_list)
-print(cipher)
