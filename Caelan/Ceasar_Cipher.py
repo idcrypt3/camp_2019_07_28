@@ -1,11 +1,9 @@
+def Fred(message, key):
+
 alphabet="abcdefghijklmnopqrstuvwxyz"
 partialOne=""
 partialTwo=""
 newAlphabet=""
-
-message = input("Please enter a secret message:").lower()
-key = int(input("Please enter a number to shift by:"))
-
 
 if key == 0:
     newAlphabet = alphabet
@@ -26,3 +24,13 @@ for i in range(0,len(message)):
     else:
         newMessage += newAlphabet[index]
 print(newMessage)
+
+def main():
+    message = input("Please enter a secret message:").lower()
+    key = int(input("Please enter a number to shift by:"))
+
+    encrypt_message = Fred(message, key)
+    print(encrypt_message)
+
+    if __name__ == ("__main__"):
+        main()
