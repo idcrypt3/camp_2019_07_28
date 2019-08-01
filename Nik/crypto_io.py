@@ -18,15 +18,13 @@ dh_public_key = dh_base ** dh_private_key % dh_mod
 
 def main():
     # Feel free to change this intro msg to whatever you want
-    print("Hello peeps")
-    print("Welcome to yes")
-    print("Here you can encrypt messages.")
-    print("Please do not forget your key!")
+    print("Hello.\nEncrypt or suffer and die.")
+    print ("]Sourced and imported by Nik.J[")
 
     # infinite loop runs until the user quits
     while True:
         print()  # newline for readability
-        choice = input("Type 1 to encrypt, 2 to decrypt, or 0 to quit: ")
+        choice = input("Type {1} to encrypt, {2} to decrypt, or {0} to quit: ")
 
         try:
             choice = int(choice)
@@ -43,7 +41,7 @@ def main():
             print("Have a good summer!")
             break
         else:
-            print("Sorry, '{}' is not a valid choice. Pick 1, 2, or 0.".format(choice))
+            print("Sorry, '{}' is not a valid choice. \nPick {1}, {2}, or {0}.".format(choice))
             continue
 
 
@@ -58,12 +56,12 @@ def encrypt():
             continue
 
         cypher = input(
-            "1   : Ceasar (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
+            "{1}   : Ceasar Cypher\n{2}   : Block Cypher\n{3}   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick 1, 2, or 3.".format(cypher))
+            print("Sorry, {} is not a valid choice. Pick {1}, {2}, or {3}.".format(cypher))
             continue
 
         if cypher == 1:
@@ -104,7 +102,7 @@ def decrypt():
         try:
             cypher = int(cypher)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick 1, 2, or 3.".format(cypher))
+            print("Sorry, {} is not a valid choice. Pick {1}, {2} or {3}.".format(cypher))
             continue
 
         if cypher == 1:
