@@ -12,14 +12,14 @@ from Diffie_Hellman import find_shared_key as dh_shared_key, apply_shift as dh_s
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
 dh_base = 8
 dh_mod = 29
-dh_private_key = 49
+dh_private_key = 873
 dh_public_key = dh_base ** dh_private_key % dh_mod
-
+print(dh_public_key)
 
 def main():
     # Feel free to change this intro msg to whatever you want
-    print("Hello iD Campers, Parents, and Staff!")
-    print("Welcome to the iD Cryptography Package, cryptoIO!!")
+    print("Hello.")
+    print("Welcome, I hope you're having a good day")
     print("Here you can encrypt messages and save them for others to read.")
     print("But they will only be able to decrypt them if you (remember and) share the secret keys!")
 
@@ -75,8 +75,7 @@ def encrypt():
             encrypted = "\n".join(str(s) for s in encrypted)
             break
         elif cypher == 3:
-            msg_public_key = dh_base ** data[1] % dh_mod
-            shared_key = dh_shared_key(dh_private_key, msg_public_key)
+            shared_key = dh_shared_key(dh_private_key, data[1])
             encrypted = dh_shift(data[0], shared_key)
             break
         elif cypher == 0:
