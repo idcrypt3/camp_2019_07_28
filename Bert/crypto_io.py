@@ -31,8 +31,12 @@ def main():
         try: 
             choice = int(choice)
         except:
-
-            print("Sorry, that is not a valid choice.")
+            white = "\x1b[0m"
+            escape = "\x1b["
+            color1 = "31m"
+            text = "Sorry, that is not a valid choice."
+            text_color = escape + color1 + text + white
+            print(text_color)
             continue
 
         if choice == 1:
@@ -59,8 +63,13 @@ def encrypt():
     while True:
         file_name = input("Please enter your message's name: ").strip()
         if "{}.txt".format(file_name) in os.listdir("msgs"):
-            print("Sorry, there is already a secret message with that name. Choose another.")
-            continue
+            white = "\x1b[0m"
+            escape = "\x1b["
+            color1 = "31m"
+            text = "Sorry, there is already a secret message with that name. Choose another."
+            text_color = escape + color1 + text + white
+            print(text_color)
+            break
         
         cypher = input(
             "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
@@ -88,8 +97,9 @@ def encrypt():
             shared_key = dh_shared_key(dh_private_key, data[1])
             encrypted = dh_shift(data[0], shared_key)
             break
-        elif cypher == 0:
-            return
+        elif cypher >= 3:
+            print("choose 1, 2 or 3")
+            continue
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
