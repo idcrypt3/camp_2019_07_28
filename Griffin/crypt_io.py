@@ -139,6 +139,10 @@ def decrypt():
             print("Message Valid!")
         else:
             print("Something is wrong\nEither you have not successfully decrypted it\nor the file is not authentic.")
+    storepass = input("is this the correct decryption? Y/N :")
+    if storepass == "Y" or storepass == "y":
+        l = open("hshs/keychain.txt", "a+")
+        l.write(data[3] + ", " + str(cypher) + ", " + str(data[1]) + "\n")
     return
 
 
@@ -181,7 +185,7 @@ def get_decrypt_input():
             print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
 
     key = get_key()
-    return msg, key, ohash
+    return msg, key, ohash, localMsgs[choice - 1]
 
 
 def get_key():
