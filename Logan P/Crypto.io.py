@@ -241,7 +241,8 @@ if __name__ == "__main__":
 # Ideas for new features:
 # - Include your name or contact info in the comments and/or opening scroll.
 # - Write some messages or stories and encrypt and save them to dids to discover.
-# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes)sk for your family and friends.
+# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes)sk for
+# your family and friends.
 # - This program includes functionality you haven't seen in the form of file I/O, string formatting, and imported
 # modules. See if you understand what's going on and reference the online documentation if you don't.
 # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
