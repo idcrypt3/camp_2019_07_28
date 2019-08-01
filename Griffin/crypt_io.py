@@ -87,13 +87,16 @@ def encrypt():
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
-    with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
-        shash.write(find_hash(data[0]))
+    #print(find_hash(data[0]))
+    f = open("hshs/hshs.txt", "a+")
+    f.write(file_name + ".txt\n" + find_hash(data[0]) + "\n")
+    #with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
+    #    shash.write(find_hash(data[0]))
     print("Your message was successfully encrypted!\n")
 
 
 def get_encrypt_input():
-    msg = input("Please enter your secret message: ")
+    msg = input("Please enter your secret message: ").strip()
     key = get_key()
     return msg, key
 
@@ -127,10 +130,12 @@ def decrypt():
         elif cypher == 0:
             return
 
-    print("The decrypted message is:\n'{}'".format(decrypted))
+    print("The decrypted message is:\n{}".format(decrypted))
     if data[2] == "NULL":
         print("You do not have a hash file. this may be invalid.")
     else:
+        print(find_hash(decrypted))
+        print(data[2])
         if find_hash(decrypted) == data[2]:
             print("Message Valid!")
         else:
@@ -165,11 +170,17 @@ def get_decrypt_input():
         elif choice <= len(localMsgs):
             with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
-            if os.path.isfile("hshs/_hash_{}".format(localMsgs[choice - 1])):
-                with io.open("hshs/_hash_{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as ofile:
-                    ohash = ofile.read()
-            else:
-                ohash = "NULL"
+            #if os.path.isfile("hshs/_hash_{}".format(localMsgs[choice - 1])):
+            #    with io.open("hshs/_hash_{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as ofile:
+            #        ohash = ofile.read()
+            #else:
+            ohash = "NULL"
+            with io.open("hshs/hshs.txt", 'r', encoding="utf-8") as file:
+                hsh = file.read()
+            hshs = hsh.split("\n")
+            for i in range(0, len(hshs), 2):
+                if hshs[i] == localMsgs[choice - 1]:
+                    ohash = hshs[i + 1]
             break
         else:
             print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
