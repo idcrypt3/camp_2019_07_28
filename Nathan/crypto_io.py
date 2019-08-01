@@ -19,40 +19,61 @@ dh_public_key = dh_base ** dh_private_key % dh_mod
 csi = "\x1b["
 colorw = "30m"
 colorr = "31m"
-colorg = "34m"
+colorg = "36m"
 
 text1 = "Hello iD Campers, Parents, and Staff!"
-text2 ="Welcome to the iD Cryptography Package, cryptoIO!!"
-text3 ="Here you can encrypt messages and save them for others to read."
-text4 ="But they will only be able to decrypt them if you (remember and) share the secret keys!"
-
+text2 = "Welcome to the iD Cryptography Package, cryptoIO!!"
+text3 = "Here you can encrypt messages and save them for others to read."
+text4 = "But they will only be able to decrypt them if you (remember and) share the secret keys!"
+text5 = "Type 1 to encrypt, 2 to decrypt, or 0 to quit: "
+text6 = "Sorry, that is not a valid choice."
+text7 = "Thank you for using iD Tech cryptoIO!"
+text8 = "Have a good summer!"
+text9 = "Sorry, '{}' is not a valid choice. Pick 1, 2, or 0."
+text10 = "Preparing to encrypt..."
+text11 = "Please enter your message's name: "
+text12 = "Sorry, there is already a secret message with that name. Choose another."
+text13 = "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): "
+text14 = "Sorry, {} is not a valid choice. Pick 1, 2, or 3."
+text15 = "Your message was successfully encrypted!\n"
+text16 = "Please enter your secret message: "
+text17 = "Preparing to decrypt..."
+text18 = "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): "
+text19 = "Sorry, {} is not a valid choice. Pick 1, 2, or 3."
+text20 = "The decrypted message is:\n'{}'"
+text21 = "Please choose a message from above to decrypt (or, type 0 for manual entry): "
+text22 = "Sorry, {} is not a valid choice. Pick between 0 and {}."
+text23 = "Manually enter the encrypted message: "
+text24 = "Sorry, {} is not a valid choice. Pick between 0 and {}."
+text25 = "Please enter your secret key: "
+text26 = "The secret key should be a number. Try again. "
 
 colored_text1 = csi + colorw + text1
 colored_text2 = csi + colorw + text2
 colored_text3 = csi + colorw + text3
 colored_text4 = csi + colorw + text4
-colored_text5 = csi + colorw
-colored_text6 = csi + colorr
-colored_text7 = csi + colorw
-colored_text8 = csi + colorw
-colored_text9 = csi + colorr
-colored_text10 = csi + colorg
-colored_text11 = csi + colorw
-colored_text12 = csi + colorr
-colored_text13 = csi + colorw
-colored_text14 = csi + colorr
-colored_text15 = csi + colorg
-colored_text16 = csi + colorw
-colored_text17 = csi + colorw
-colored_text18 = csi + colorw
-colored_text19 = csi + colorr
-colored_text20 = csi + colorw
-colored_text21 = csi + colorw
-colored_text22 = csi + colorr
-colored_text23 = csi + colorw
-colored_text24 = csi + colorr
-colored_text25 = csi + colorw
-colored_text26 = csi + colorr  
+colored_text5 = csi + colorw + text5
+colored_text6 = csi + colorr + text6
+colored_text7 = csi + colorw + text7
+colored_text8 = csi + colorw + text8
+colored_text9 = csi + colorr + text9
+colored_text10 = csi + colorg + text10
+colored_text11 = csi + colorw + text11
+colored_text12 = csi + colorr + text12
+colored_text13 = csi + colorw + text13
+colored_text14 = csi + colorr + text14
+colored_text15 = csi + colorg + text15
+colored_text16 = csi + colorw + text16
+colored_text17 = csi + colorw + text17
+colored_text18 = csi + colorw + text18
+colored_text19 = csi + colorr + text19
+colored_text20 = csi + colorw + text20
+colored_text21 = csi + colorw + text21
+colored_text22 = csi + colorr + text22
+colored_text23 = csi + colorw + text23
+colored_text24 = csi + colorr + text24
+colored_text25 = csi + colorw + text25
+colored_text26 = csi + colorr + text26
 
 
 def prgreen(skk): print("\033[1;32;00m{}".format(skk))
@@ -60,20 +81,20 @@ def prgreen(skk): print("\033[1;32;00m{}".format(skk))
 
 def main():
     # Feel free to change this intro msg to whatever you want
-    print(text1)
-    print(text2)
-    print(text3)
-    print(text4)
+    print(colored_text1)
+    print(colored_text2)
+    print(colored_text3)
+    print(colored_text4)
 
     # infinite loop runs until the user quits
     while True:
         print()  # newline for readability
-        choice = input("Type 1 to encrypt, 2 to decrypt, or 0 to quit: ")
+        choice = input(colored_text5)
 
         try:
             choice = int(choice)
         except:
-            print("Sorry, that is not a valid choice.")
+            print(colored_text6)
             continue
 
         if choice == 1:
@@ -81,32 +102,30 @@ def main():
         elif choice == 2:
             decrypt()
         elif choice == 0:
-            print("Thank you for using iD Tech cryptoIO!")
-            print("Have a good summer!")
+            print(colored_text7)
+            print(colored_text8)
             break
         else:
-            print("Sorry, '{}' is not a valid choice. Pick 1, 2, or 0.".format(choice))
+            print(colored_text9.format(choice))
             continue
 
 
 def encrypt():
-    print("Preparing to encrypt...")
+    print(colored_text10)
     data = get_encrypt_input()
 
     while True:
-        file_name = input("Please enter your message's name: ").strip()
+        file_name = input(colored_text11).strip()
         if "{}.txt".format(file_name) in os.listdir("msgs"):
-            print("Sorry, there is already a secret message with that name. Choose another.")
+            print(colored_text12)
             continue
 
-        cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease s"
-            "elect a cypher (1, 2, or 3): ")
+        cypher = input(colored_text13)
 
         try:
             cypher = int(cypher)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick 1, 2, or 3.".format(cypher))
+            print(colored_text14.format(cypher))
             continue
 
         if cypher == 1:
@@ -127,28 +146,26 @@ def encrypt():
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
-    print("Your message was successfully encrypted!\n")
+    print(colored_text15)
 
 
 def get_encrypt_input():
-    msg = input("Please enter your secret message: ")
+    msg = input(colored_text16)
     key = get_key()
     return msg, key
 
 
 def decrypt():
-    print("Preparing to decrypt...")
+    print(colored_text17)
     data = get_decrypt_input()
 
     while True:
-        cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a"
-            " cypher (1, 2, or 3): ")
+        cypher = input(colored_text18)
 
         try:
             cypher = int(cypher)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick 1, 2, or 3.".format(cypher))
+            print(colored_text19.format(cypher))
             continue
 
         if cypher == 1:
@@ -166,7 +183,7 @@ def decrypt():
         elif cypher == 0:
             return
 
-    print("The decrypted message is:\n'{}'".format(decrypted))
+    print(colored_text20.format(decrypted))
 
     return
 
@@ -184,23 +201,23 @@ def get_decrypt_input():
     print()
 
     while True:
-        choice = input("Please choose a message from above to decrypt (or, type 0 for manual entry): ")
+        choice = input(colored_text21)
 
         try:
             choice = int(choice)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localmsgs)))
+            print(colored_text22.format(choice, len(localmsgs)))
             continue
 
         if choice == 0:
-            msg = input("Manually enter the encrypted message: ").strip()
+            msg = input(colored_text23).strip()
             break
         elif choice <= len(localmsgs):
             with io.open("msgs/{}".format(localmsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
             break
         else:
-            print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localmsgs)))
+            print(colored_text24.format(choice, len(localmsgs)))
 
     key = get_key()
     return msg, key
@@ -209,10 +226,10 @@ def get_decrypt_input():
 def get_key():
     while True:
         try:
-            key = int(input("Please enter your secret key: "))
+            key = int(input(colored_text25))
             break
         except ValueError:
-            print("The secret key should be a number. Try again. ")
+            print(colored_text26)
     return key
 
 
