@@ -1,5 +1,5 @@
 alphabet = "abcdefghijklmnopqrstuvwxyz"
-message = "zso rsuk"
+message = "nclgq"
 def decode(message):
     for key in range(len(alphabet)):
         newAlphabet = alphabet[key:] + alphabet[:key]

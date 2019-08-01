@@ -7,7 +7,7 @@ from cesar_idiot import cesar_encrypt as shift_cypher
 from Discriptive_name_of_the_block_cipher import pad_message as block_pad, rebuild_message as block_rebuild
 from Discriptive_name_of_the_block_cipher import apply_rotate as block_shift, undo_rotate as block_unshift
 from Diffe_Hellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
-from SHASH-256 import
+from SHASH import do as find_hash
 
 # here I set the private key used in Diffie-Hellman encryptions. Feel free to change it.
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
@@ -78,8 +78,7 @@ def encrypt():
             encrypted = "\n".join(str(s) for s in encrypted)
             break
         elif cypher == 3:
-            msg_public_key = dh_base ** data[1] % dh_mod
-            shared_key = dh_shared_key(dh_private_key, msg_public_key)
+            shared_key = dh_shared_key(dh_private_key, data[1])
             encrypted = dh_shift(data[0], shared_key)
             break
         elif cypher == 0:
@@ -87,11 +86,16 @@ def encrypt():
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
+    #print(find_hash(data[0]))
+    f = open("hshs/hshs.txt", "a+")
+    f.write(file_name + ".txt\n" + find_hash(data[0].strip()) + "\n")
+    #with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
+    #    shash.write(find_hash(data[0]))
     print("Your message was successfully encrypted!\n")
 
 
 def get_encrypt_input():
-    msg = input("Please enter your secret message: ")
+    msg = input("Please enter your secret message: ").strip()
     key = get_key()
     return msg, key
 
@@ -125,8 +129,16 @@ def decrypt():
         elif cypher == 0:
             return
 
-    print("The decrypted message is:\n'{}'".format(decrypted))
-
+    print("The decrypted message is:\n{}".format(decrypted))
+    if data[2] == "NULL":
+        print("You do not have a hash file. this may be invalid.")
+    else:
+        print(find_hash(decrypted))
+        print(data[2])
+        if find_hash(decrypted) == data[2]:
+            print("Message Valid!")
+        else:
+            print("Something is wrong\nEither you have not successfully decrypted it\nor the file is not authentic.")
     return
 
 
@@ -156,13 +168,20 @@ def get_decrypt_input():
             break
         elif choice <= len(localMsgs):
             with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
-                msg = file.read()
+                msg = (file.read()).strip()
+            ohash = "NULL"
+            with io.open("hshs/hshs.txt", 'r', encoding="utf-8") as file:
+                hsh = file.read()
+            hshs = hsh.split("\n")
+            for i in range(0, len(hshs), 2):
+                if hshs[i] == localMsgs[choice - 1]:
+                    ohash = hshs[i + 1]
             break
         else:
             print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
 
     key = get_key()
-    return msg, key
+    return msg, key, ohash
 
 
 def get_key():

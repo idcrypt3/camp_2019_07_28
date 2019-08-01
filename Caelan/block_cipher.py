@@ -44,11 +44,15 @@ def undo_shift(cipher_list, key, block_size=4):
         message_list.append(number)
     return message_list
 
-plaintext = "Anything"
-key = 20
-text_list = pad_message(plaintext)
-cipher_list = apply_shift(text_list, key)
-cipher = undo_shift(cipher_list, key)
-print(cipher)
-message = rebuild_message(cipher)
-print(message)
+    def main():
+        plaintext = "Anything"
+        key = 20
+        text_list = pad_message(plaintext)
+        cipher_list = apply_shift(text_list, key)
+        cipher = undo_shift(cipher_list, key)
+        print(cipher)
+        message = rebuild_message(cipher)
+        print(message)
+
+    if __name__ == ("__main__"):
+        main()
