@@ -18,12 +18,12 @@ def find_shared_key(private_key, public_key):
 
 public_base = 8
 public_modulus = 29
-alice_public_key = public_base ** alice_private_key % public_modulus
-bob_public_key = public_base ** bob_private_key % public_modulus
 
 alice_private_key = 5
 bob_private_key = 7
-alice_message + "Hello Bob"
+alice_message = "Hello Bob"
+alice_public_key = public_base ** alice_private_key % public_modulus
+bob_public_key = public_base ** bob_private_key % public_modulus
 
 alice_shared_key = find_shared_key(alice_private_key, bob_public_key)
 alice_cipher = apply_shift(alice_message, alice_shared_key)

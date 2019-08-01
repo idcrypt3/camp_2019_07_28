@@ -1,10 +1,10 @@
-def encrypt(fortnite):
+def encode(message):
     result = ""
-    for i in range(len(fortnite)):
-        char = fortnite[i]
+    for i in range(len(message)):
+        char = message[i]
         result +=chr(ord(char)+3)
     return result
 
 message=input("please enter a secret message:")
-print(encrypt(message))
+print(encode(message))
 
