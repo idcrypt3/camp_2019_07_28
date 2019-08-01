@@ -89,7 +89,7 @@ def encrypt():
         file.write(encrypted)
     #print(find_hash(data[0]))
     f = open("hshs/hshs.txt", "a+")
-    f.write(file_name + ".txt\n" + find_hash(data[0]) + "\n")
+    f.write(file_name + ".txt\n" + find_hash(data[0].strip()) + "\n")
     #with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
     #    shash.write(find_hash(data[0]))
     print("Your message was successfully encrypted!\n")
