@@ -12,14 +12,14 @@ from DiffieHelman import find_shared_key as dh_shared_key, apply_shift as dh_shi
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
 dh_base = 8
 dh_mod = 29
-dh_private_key = 49
+dh_private_key = 97
 dh_public_key = dh_base ** dh_private_key % dh_mod
-
+print(dh_public_key)
 
 def main():
     # Feel free to change this intro msg to whatever you want
-    print("Hello.\nEncrypt or suffer and die.")
-    print ("]Sourced and imported by Nik.J[")
+    print("Hello.\nEncrypt N O W.")
+    print ("[Sourced,imported and modified by Nik.J]")
 
     # infinite loop runs until the user quits
     while True:
@@ -29,7 +29,7 @@ def main():
         try:
             choice = int(choice)
         except:
-            print("Sorry, that is not a valid choice.")
+            print("Choose something else, foolish mortal.")
             continue
 
         if choice == 1:
@@ -41,7 +41,7 @@ def main():
             print("Have a good summer!")
             break
         else:
-            print("Sorry, '{}' is not a valid choice. \nPick {1}, {2}, or {0}.".format(choice))
+            print("Sorry, '{}' is not a valid choice. \nPick 1, 2, or 0.".format(choice))
             continue
 
 
@@ -61,7 +61,7 @@ def encrypt():
         try:
             cypher = int(cypher)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick {1}, {2}, or {3}.".format(cypher))
+            print("Sorry, {} is not a valid choice. Pick 1, 2, or 3.".format(cypher))
             continue
 
         if cypher == 1:
@@ -73,8 +73,7 @@ def encrypt():
             encrypted = "\n".join(str(s) for s in encrypted)
             break
         elif cypher == 3:
-            msg_public_key = dh_base ** data[1] % dh_mod
-            shared_key = dh_shared_key(dh_private_key, msg_public_key)
+            shared_key = dh_shared_key(dh_private_key, data[1])
             encrypted = dh_shift(data[0], shared_key)
             break
         elif cypher == 0:
@@ -102,13 +101,14 @@ def decrypt():
         try:
             cypher = int(cypher)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick {1}, {2} or {3}.".format(cypher))
+            print("Sorry, {} is not a valid choice. Pick 1, 2 or 3.".format(cypher))
             continue
 
         if cypher == 1:
             decrypted = shift_cypher(data[0], -data[1])
             break
         elif cypher == 2:
+            print(data[0].split("\n"))
             chunk_list = list(map(int, data[0].split("\n")))
             chunk_list = block_unshift(chunk_list, data[1])
             decrypted = block_rebuild(chunk_list)
@@ -163,7 +163,7 @@ def get_decrypt_input():
 def get_key():
     while True:
         try:
-            key = int(input("Please enter your secret key: "))
+            key = int(input("Please enter your key: "))
             break
         except ValueError:
             print("The key should be a number. Try again. ")
@@ -183,7 +183,7 @@ if __name__ == "__main__":
 # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
 # rather than forcing them to stick with the choice to encrypt or decrypt, even if they change their mind). Try expand-
 # ing it!
-# Prevent the user from attempting a Ceaser shift greater than +-26, or use mod (%) to correct it
+# Prevent the user from attempting a Ceasar shift greater than +-26, or use mod (%) to correct it
 
 # Advanced features:
 # - Create a puzzle for users to solve by slowly ramping up the difficulty (e.g., the key to a block cypher could be
