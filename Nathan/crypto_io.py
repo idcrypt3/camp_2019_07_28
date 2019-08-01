@@ -47,6 +47,8 @@ text23 = "Manually enter the encrypted message: "
 text24 = "Sorry, {} is not a valid choice. Pick between 0 and {}."
 text25 = "Please enter your secret key: "
 text26 = "The secret key should be a number. Try again. "
+text27 = "Name: Nathan C."
+text28 = "Position: Meme master."
 
 colored_text1 = csi + colorw + text1
 colored_text2 = csi + colorw + text2
@@ -67,13 +69,15 @@ colored_text16 = csi + colorw + text16
 colored_text17 = csi + colorw + text17
 colored_text18 = csi + colorw + text18
 colored_text19 = csi + colorr + text19
-colored_text20 = csi + colorw + text20
+colored_text20 = csi + colorg + text20
 colored_text21 = csi + colorw + text21
 colored_text22 = csi + colorr + text22
 colored_text23 = csi + colorw + text23
 colored_text24 = csi + colorr + text24
 colored_text25 = csi + colorw + text25
 colored_text26 = csi + colorr + text26
+colored_text27 = csi + colorw + text27
+colored_text28 = csi + colorw + text28
 
 
 def prgreen(skk): print("\033[1;32;00m{}".format(skk))
@@ -104,6 +108,8 @@ def main():
         elif choice == 0:
             print(colored_text7)
             print(colored_text8)
+            print(colored_text27)
+            print(colored_text28)
             break
         else:
             print(colored_text9.format(choice))
@@ -239,9 +245,9 @@ if __name__ == "__main__":
 
 
 # Ideas for new features:
-# - Include your name or contact info in the comments and/or opening scroll.
+# - Include your name or contact info in the comments and/or opening scroll.()
 # - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
-# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).
+# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).()
 # - This program includes functionality you haven't seen in the form of file I/O, string formatting, and imported
 # modules. See if you understand what's going on and reference the online documentation if you don't.
 # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
