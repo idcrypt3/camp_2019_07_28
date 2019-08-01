@@ -53,9 +53,13 @@ text26 = "The secret key should be a number. Try again. "
 text27 = "Name: Nathan C."
 text28 = "Position: Meme master."
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 text29 = "B, 51 Backwards."
 >>>>>>> 10b593d16c02dfa76b93de4764d2224218f5d47f
+=======
+text29 = "B, 51 Backwards."
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
 
 colored_text1 = csi + colorw + text1
 colored_text2 = csi + colorw + text2
@@ -86,9 +90,13 @@ colored_text26 = csi + colorr + text26
 colored_text27 = csi + colorw + text27
 colored_text28 = csi + colorw + text28
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 colored_text29 = csi + colorc + text29
 >>>>>>> 10b593d16c02dfa76b93de4764d2224218f5d47f
+=======
+colored_text29 = csi + colorc + text29
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
 
 
 def prgreen(skk): print("\033[1;32;00m{}".format(skk))
@@ -258,6 +266,7 @@ if __name__ == "__main__":
 
 # Ideas for new features:
 <<<<<<< HEAD
+<<<<<<< HEAD
 # - Include your name or contact info in the comments and/or opening scroll.()
 # - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
 # - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).()
@@ -266,6 +275,11 @@ if __name__ == "__main__":
 # - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
     # - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).
 >>>>>>> 10b593d16c02dfa76b93de4764d2224218f5d47f
+=======
+    # - Include your name or contact info in the comments and/or opening scroll.
+# - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
+    # - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
 # - This program includes functionality you haven't seen in the form of file I/O, string formatting, and imported
 # modules. See if you understand what's going on and reference the online documentation if you don't.
 # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu

@@ -3,6 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d8646661-b5f0-40bd-84ae-280e1e4fdb55" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
+>>>>>>> e3f96ec13da523b945a66b68b34e7fdddf10e9dd
       <change beforePath="$PROJECT_DIR$/Character Code.py" beforeDir="false" afterPath="$PROJECT_DIR$/Character Code.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crypto_io.py" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_io.py" afterDir="false" />
     </list>
@@ -17,8 +25,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/crypto_io.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="260">
               <caret line="188" column="49" lean-forward="true" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <state relative-caret-position="608">
+              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+=======
+            <state relative-caret-position="468">
+              <caret line="151" column="63" selection-start-line="151" selection-start-column="63" selection-end-line="151" selection-end-column="63" />
+>>>>>>> 10b593d16c02dfa76b93de4764d2224218f5d47f
+=======
+            <state relative-caret-position="468">
+              <caret line="151" column="63" selection-start-line="151" selection-start-column="63" selection-end-line="151" selection-end-column="63" />
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
+>>>>>>> e3f96ec13da523b945a66b68b34e7fdddf10e9dd
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -120,7 +143,19 @@
   <component name="PropertiesComponent">
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+=======
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+>>>>>>> 10b593d16c02dfa76b93de4764d2224218f5d47f
+=======
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
+>>>>>>> e3f96ec13da523b945a66b68b34e7fdddf10e9dd
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -243,8 +278,23 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.crypto_io" />
+<<<<<<< HEAD
         <item itemvalue="Python.Character Code" />
         <item itemvalue="Python.Brute Force" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <item itemvalue="Python.Brute Force" />
+        <item itemvalue="Python.Character Code" />
+=======
+        <item itemvalue="Python.Character Code" />
+        <item itemvalue="Python.Brute Force" />
+>>>>>>> 10b593d16c02dfa76b93de4764d2224218f5d47f
+=======
+        <item itemvalue="Python.Character Code" />
+        <item itemvalue="Python.Brute Force" />
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
+>>>>>>> e3f96ec13da523b945a66b68b34e7fdddf10e9dd
         <item itemvalue="Python.Diffie_Hellman" />
         <item itemvalue="Python.Block_Cipher" />
       </list>
@@ -465,6 +515,15 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/Digital Signature Standard.py">
+=======
+=======
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
+>>>>>>> e3f96ec13da523b945a66b68b34e7fdddf10e9dd
     <entry file="file://$PROJECT_DIR$/prGreen.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -473,6 +532,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Brute Force.py">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 10b593d16c02dfa76b93de4764d2224218f5d47f
+=======
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
+>>>>>>> e3f96ec13da523b945a66b68b34e7fdddf10e9dd
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
@@ -494,31 +560,87 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/Diffie_Hellman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+<<<<<<< HEAD
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/Brute Force.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> e3f96ec13da523b945a66b68b34e7fdddf10e9dd
     <entry file="file://$PROJECT_DIR$/Ceaser_Cipher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+=======
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Character Code.py">
+    <entry file="file://$PROJECT_DIR$/Ceaser_Cipher.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="60">
           <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+=======
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/Ceaser_Cipher.py">
+      <provider selected="true" editor-type-id="text-editor">
+=======
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
+        <state relative-caret-position="330">
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+>>>>>>> e3f96ec13da523b945a66b68b34e7fdddf10e9dd
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Diffie_Hellman.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="160">
           <caret line="16" column="43" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="43" />
+=======
+<<<<<<< HEAD
+>>>>>>> 10b593d16c02dfa76b93de4764d2224218f5d47f
+=======
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
+        <state relative-caret-position="60">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+>>>>>>> e3f96ec13da523b945a66b68b34e7fdddf10e9dd
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/crypto_io.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="260">
           <caret line="188" column="49" lean-forward="true" selection-start-line="188" selection-start-column="49" selection-end-line="188" selection-end-column="49" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="608">
+          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+=======
+        <state relative-caret-position="468">
+          <caret line="151" column="63" selection-start-line="151" selection-start-column="63" selection-end-line="151" selection-end-column="63" />
+>>>>>>> 10b593d16c02dfa76b93de4764d2224218f5d47f
+=======
+        <state relative-caret-position="468">
+          <caret line="151" column="63" selection-start-line="151" selection-start-column="63" selection-end-line="151" selection-end-column="63" />
+>>>>>>> baed39fca8aa92852e2706bae0192317da5feffa
+>>>>>>> e3f96ec13da523b945a66b68b34e7fdddf10e9dd
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
