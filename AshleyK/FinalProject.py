@@ -3,10 +3,10 @@ import os, io
 # uncomment the 3 lines below and replace the names of your files (do not include .py) and function defs
 # leave "as name" as-is; this renames your functions so they are all compatible with this program,
 # regardless of what you named them
-#from YOUR_SHIFT_CYPHER_FILE import YOUR_SHIFT_DEF as shift_cypher
-#from YOUR_BLOCK_CYPHER_FILE import YOUR_PAD_MSG as block_pad, YOUR_REBUILD_MSG as block_rebuild
-#from YOUR_BLOCK_CYPHER_FILE import YOUR_APPLY_SHIFT as block_shift, YOUR_UNDO_SHIFT as block_unshift
-#from YOUR_DIFF_HELL_FILE import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
+from RewritingTheAlphabet import shift_cipher as shift_cypher
+from BlockCipher import pad_message as block_pad, rebuild_message as block_rebuild
+from BlockCipher import apply_shift as block_shift, undo_shift as block_unshift
+from DiffieHellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
 
 dh_base = 8
 dh_mod = 29
@@ -35,13 +35,12 @@ def main():
         elif choice == 2:
             decrypt()
         elif choice == 0:
-            print("Thank you for using iD Tech crypto.io!")
+            print("Thank you for using crypto.io!")
             print("Have a good summer!")
             break
         else:
             print("Sorry, '{}' is not a valid choice. Pick 1, 2, or 0.".format(choice))
             continue
-
 
 def encrypt():
     print("Preparing to encrypt...")
@@ -54,7 +53,7 @@ def encrypt():
             continue
 
         cypher = input(
-            "1   : Caeser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
+            "1   : Shift Cipher\n2   : Block Cipher\n3   : Diffie-Hellman cipher\nPlease select a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
@@ -95,7 +94,7 @@ def decrypt():
 
     while True:
         cypher = input(
-            "1   : Caeser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
+            "1   : Shift Cipher\n2   : Block Cipher\n3   : Diffie-Hellman Cipher\nPlease select a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
