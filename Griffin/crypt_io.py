@@ -86,7 +86,7 @@ def encrypt():
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
-    #print(find_hash(data[0]))
+    print(find_hash(data[0].strip()))
     f = open("hshs/hshs.txt", "a+")
     f.write(file_name + ".txt\n" + find_hash(data[0].strip()) + "\n")
     #with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
@@ -182,7 +182,7 @@ def get_decrypt_input():
                 msg = (file.read()).strip()
             ohash = "NULL"
             with io.open("hshs/hshs.txt", 'r', encoding="utf-8") as file:
-                hsh = (file.read()).strip()
+                hsh = file.read()
             hshs = hsh.split("\n")
             for i in range(0, len(hshs), 2):
                 if hshs[i] == localMsgs[choice - 1]:
