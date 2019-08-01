@@ -3,21 +3,18 @@ import os, io
 # uncomment the 3 lines below and replace the names of your files (do not include .py) and function defs
 # leave "as name" as-is; this renames your functions so they are all compatible with this program,
 # regardless of what you named them
-from cesar_idiot import cesar_encrypt as shift_cypher
-from Discriptive_name_of_the_block_cipher import pad_message as block_pad, rebuild_message as block_rebuild
-from Discriptive_name_of_the_block_cipher import apply_rotate as block_shift, undo_rotate as block_unshift
-from Diffe_Hellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
-from SHASH import do as find_hash
+from CaesarCipher import encrypt as shift_cypher
+from BlockCipher import pad_message as block_pad, rebuild_message as block_rebuild
+from BlockCipher import apply_rotate as block_shift, undo_rotation as block_unshift
+from DiffieHellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
 
 # here I set the private key used in Diffie-Hellman encryptions. Feel free to change it.
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
 dh_base = 8
 dh_mod = 29
-dh_private_key = int(input("What is your private key?: "))
-for _ in range(100):
-    print("")
+dh_private_key = 203
 dh_public_key = dh_base ** dh_private_key % dh_mod
-print("Your Public Key is: " + str(dh_public_key))
+print("DH pub key: {}".format(dh_public_key))
 
 def main():
     # Feel free to change this intro msg to whatever you want
@@ -86,17 +83,11 @@ def encrypt():
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
-    print(find_hash(data[0].strip()))
-    print(data[0])
-    f = open("hshs/hshs.txt", "a+")
-    f.write(file_name + ".txt\n" + find_hash(data[0].strip()) + "\n")
-#   with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
-#        shash.write(find_hash(data[0]))
     print("Your message was successfully encrypted!\n")
 
 
 def get_encrypt_input():
-    msg = input("Please enter your secret message: ").strip()
+    msg = input("Please enter your secret message: ")
     key = get_key()
     return msg, key
 
@@ -130,20 +121,8 @@ def decrypt():
         elif cypher == 0:
             return
 
-    print("The decrypted message is:\n{}".format(decrypted))
-    if data[2] == "NULL":
-        print("You do not have a hash file. this may be invalid.")
-    else:
-        print(find_hash(decrypted))
-        print(data[2])
-        if find_hash(decrypted) == data[2]:
-            print("Message Valid!")
-        else:
-            print("Something is wrong\nEither you have not successfully decrypted it\nor the file is not authentic.")
-    storepass = input("is this the correct decryption? Y/N :")
-    if storepass == "Y" or storepass == "y":
-        l = open("hshs/keychain.txt", "a+")
-        l.write(data[3] + ", " + str(cypher) + ", " + str(data[1]) + "\n")
+    print("The decrypted message is:\n'{}'".format(decrypted))
+
     return
 
 
@@ -172,28 +151,14 @@ def get_decrypt_input():
             msg = input("Manually enter the encrypted message: ").strip()
             break
         elif choice <= len(localMsgs):
-            with io.open("hshs/keychain.txt", "r", encoding="utf-8") as kcn:
-                keychain = ((kcn.read()).strip()).split("\n")
-            if any(localMsgs[choice - 1] in b for b in keychain):
-                print("You have one or more keys for this file.")
-                for g in range(0, len(keychain)):
-                    if localMsgs[choice - 1] in keychain[g]:
-                        print(keychain[g])
             with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
-            ohash = "NULL"
-            with io.open("hshs/hshs.txt", 'r', encoding="utf-8") as sheesh:
-                hsh = sheesh.read()
-            hshs = hsh.split("\n")
-            for i in range(0, len(hshs), 2):
-                if hshs[i] == localMsgs[choice - 1]:
-                    ohash = (hshs[i + 1]).strip()
             break
         else:
             print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
 
     key = get_key()
-    return msg, key, ohash, localMsgs[choice - 1]
+    return msg, key
 
 
 def get_key():
