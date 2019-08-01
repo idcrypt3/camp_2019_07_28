@@ -170,10 +170,6 @@ def get_decrypt_input():
         elif choice <= len(localMsgs):
             with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
-            #if os.path.isfile("hshs/_hash_{}".format(localMsgs[choice - 1])):
-            #    with io.open("hshs/_hash_{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as ofile:
-            #        ohash = ofile.read()
-            #else:
             ohash = "NULL"
             with io.open("hshs/hshs.txt", 'r', encoding="utf-8") as file:
                 hsh = file.read()
@@ -181,6 +177,7 @@ def get_decrypt_input():
             for i in range(0, len(hshs), 2):
                 if hshs[i] == localMsgs[choice - 1]:
                     ohash = hshs[i + 1]
+                    print(ohash)
             break
         else:
             print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
