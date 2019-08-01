@@ -3,7 +3,7 @@ import os, io
 # uncomment the 3 lines below and replace the names of your files (do not include .py) and function defs
 # leave "as name" as-is; this renames your functions so they are all compatible with this program,
 # regardless of what you named them
-#from Alphabet import YOUR_SHIFT_DEF as shift_cypher
+from Alphabet import cesar_cipher as shift_cypher
 from BlockCipher import pad_message as block_pad, rebuild_message as block_rebuild
 from BlockCipher import apply_rotate as block_shift, undo_rotate as block_unshift
 from DiffieHellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
@@ -75,8 +75,7 @@ def encrypt():
             encrypted = "\n".join(str(s) for s in encrypted)
             break
         elif cypher == 3:
-            msg_public_key = dh_base ** data[1] % dh_mod
-            shared_key = dh_shared_key(dh_private_key, msg_public_key)
+            shared_key = dh_shared_key(dh_private_key, data[1])
             encrypted = dh_shift(data[0], shared_key)
             break
         elif cypher == 0:
@@ -185,8 +184,8 @@ if __name__ == "__main__":
 
 # Ideas for new features:
 # - Include your name or contact info in the comments and/or opening scroll.
-# - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
-# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).
+# - Write some messages or stories and encrypt and save them to dids to discover.
+# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes)sk for your family and friends.
 # - This program includes functionality you haven't seen in the form of file I/O, string formatting, and imported
 # modules. See if you understand what's going on and reference the online documentation if you don't.
 # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
