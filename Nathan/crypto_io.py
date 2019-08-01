@@ -20,16 +20,16 @@ print(dh_public_key)
 csi = "\x1b["
 colorw = "30m"
 colorr = "31m"
-colorg = "36m"
+colorg = "92m"
 colorc = "37m"
-text1 = "Hello iD Campers, Parents, and Staff!"
-text2 = "Welcome to the iD Cryptography Package, cryptoIO!!"
+text1 = "Hello Ronan the Accuser!"
+text2 = "Welcome to cryptoIO."
 text3 = "Here you can encrypt messages and save them for others to read."
 text4 = "But they will only be able to decrypt them if you (remember and) share the secret keys!"
 text5 = "Type 1 to encrypt, 2 to decrypt, or 0 to quit: "
 text6 = "Sorry, that is not a valid choice."
-text7 = "Thank you for using iD Tech cryptoIO!"
-text8 = "Have a good summer!"
+text7 = "You for used cryptoIO!"
+text8 = "Goodbye Ronan the accuser!"
 text9 = "Sorry, '{}' is not a valid choice. Pick 1, 2, or 0."
 text10 = "Preparing to encrypt..."
 text11 = "Please enter your message's name: "
@@ -50,9 +50,10 @@ text23 = "Manually enter the encrypted message: "
 text24 = "Sorry, {} is not a valid choice. Pick between 0 and {}."
 text25 = "Please enter your secret key: "
 text26 = "The secret key should be a number. Try again. "
-text27 = "Name: Nathan C."
-text28 = "Position: Meme master."
+text27 = "Name: Nathan 'Ronan the Accuser Carmack"
+text28 = "Position: Meme master(Former), Accuser."
 text29 = "B, 51 Backwards."
+text30 = "Credits:"
 
 colored_text1 = csi + colorw + text1
 colored_text2 = csi + colorw + text2
@@ -83,6 +84,7 @@ colored_text26 = csi + colorr + text26
 colored_text27 = csi + colorw + text27
 colored_text28 = csi + colorw + text28
 colored_text29 = csi + colorc + text29
+colored_text30 = csi + colorc + text30
 
 
 def prgreen(skk): print("\033[1;32;00m{}".format(skk))
@@ -114,6 +116,7 @@ def main():
         elif choice == 0:
             print(colored_text7)
             print(colored_text8)
+            print(colored_text30)
             print(colored_text27)
             print(colored_text28)
             break
@@ -252,14 +255,10 @@ if __name__ == "__main__":
 
 # Ideas for new features:
 # - Include your name or contact info in the comments and/or opening scroll.()
-# - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
-# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).()
     # - Include your name or contact info in the comments and/or opening scroll.
 # - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
     # - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).
     # - Include your name or contact info in the comments and/or opening scroll.
-# - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
-    # - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).
 # - This program includes functionality you haven't seen in the form of file I/O, string formatting, and imported
 # modules. See if you understand what's going on and reference the online documentation if you don't.
 # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
