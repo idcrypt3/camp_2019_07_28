@@ -14,7 +14,7 @@ color = "34m"
 colored_text = csi + color + text
 print(colored_text)
 
-escape = "\x1b"
+escape = "\x1b["
 color = "41m"
 colored_text2 = escape+color+text
 print(colored_text2)

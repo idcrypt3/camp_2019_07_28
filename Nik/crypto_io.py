@@ -18,15 +18,13 @@ dh_public_key = dh_base ** dh_private_key % dh_mod
 
 def main():
     # Feel free to change this intro msg to whatever you want
-    print("Hello iD Campers, Parents, and Staff!")
-    print("Welcome to the iD Cryptography Package, cryptoIO!!")
-    print("Here you can encrypt messages and save them for others to read.")
-    print("But they will only be able to decrypt them if you (remember and) share the secret keys!")
+    print("Hello.\nEncrypt or suffer and die.")
+    print ("]Sourced and imported by Nik.J[")
 
     # infinite loop runs until the user quits
     while True:
         print()  # newline for readability
-        choice = input("Type 1 to encrypt, 2 to decrypt, or 0 to quit: ")
+        choice = input("Type {1} to encrypt, {2} to decrypt, or {0} to quit: ")
 
         try:
             choice = int(choice)
@@ -43,7 +41,7 @@ def main():
             print("Have a good summer!")
             break
         else:
-            print("Sorry, '{}' is not a valid choice. Pick 1, 2, or 0.".format(choice))
+            print("Sorry, '{}' is not a valid choice. \nPick {1}, {2}, or {0}.".format(choice))
             continue
 
 
@@ -54,16 +52,16 @@ def encrypt():
     while True:
         file_name = input("Please enter your message's name: ").strip()
         if "{}.txt".format(file_name) in os.listdir("msgs"):
-            print("Sorry, there is already a secret message with that name. Choose another.")
+            print("Sorry, there is already a secret message with that name.\n Choose another.")
             continue
 
         cypher = input(
-            "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
+            "{1}   : Ceasar Cypher\n{2}   : Block Cypher\n{3}   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
 
         try:
             cypher = int(cypher)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick 1, 2, or 3.".format(cypher))
+            print("Sorry, {} is not a valid choice. Pick {1}, {2}, or {3}.".format(cypher))
             continue
 
         if cypher == 1:
@@ -104,7 +102,7 @@ def decrypt():
         try:
             cypher = int(cypher)
         except ValueError:
-            print("Sorry, {} is not a valid choice. Pick 1, 2, or 3.".format(cypher))
+            print("Sorry, {} is not a valid choice. Pick {1}, {2} or {3}.".format(cypher))
             continue
 
         if cypher == 1:
@@ -116,7 +114,7 @@ def decrypt():
             decrypted = block_rebuild(chunk_list)
             break
         elif cypher == 3:
-            shared_key = dh_shared_key(data[1], dh_public_key)
+            shared_key = dh_shared_key(dh_private_key, data[1])
             decrypted = dh_unshift(data[0], shared_key)
             break
         elif cypher == 0:
@@ -168,7 +166,7 @@ def get_key():
             key = int(input("Please enter your secret key: "))
             break
         except ValueError:
-            print("The secret key should be a number. Try again. ")
+            print("The key should be a number. Try again. ")
     return key
 
 

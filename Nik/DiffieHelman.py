@@ -48,5 +48,5 @@ def main():
     alice_plaintext = remove_shift(alice_cipher, bob_shared_key)
     print(alice_plaintext)
 
-    if __name__ == ("__main__"):
-        main()
+if __name__ == ("__main__"):
+    main()

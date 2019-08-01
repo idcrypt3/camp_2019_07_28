@@ -9,6 +9,6 @@ print(N)
 print(hex(N))
 
 escape = "\x1b["
-color = "31m"
+color = "34m"
 colored_text = escape + color + text
 print(colored_text)

@@ -7,12 +7,11 @@ for i in numbers:
 print(text)
 for c in text:
     N = ord(c)
+    # print(N)
     print(hex(N))
 
+## Note to editor: Add the below code for the 2nd code snippet
 csi = "\x1b["
 color = "34m"
 colored_text = csi + color + text
-escape = "\x1b"
-color = "31m"
-colored_text = escape + color + text
 print(colored_text)
