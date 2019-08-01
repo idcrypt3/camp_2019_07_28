@@ -1,10 +1,10 @@
+partialOne = ""
+partialTwo = ""
+newAlphabet = ""
+alphabet = "abcdefghijklmnopqrstuvwxyz"
 def cesar_encrypt(message, key):
     key = key % 26
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-    partialOne = ""
-    partialTwo = ""
-    newAlphabet = ""
-
+    message = message.lower()
     if key == 0:
         newAlphabet = alphabet
     elif key > 0:

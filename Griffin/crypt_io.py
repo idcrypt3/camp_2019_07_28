@@ -128,11 +128,13 @@ def decrypt():
             return
 
     print("The decrypted message is:\n'{}'".format(decrypted))
-    if find_hash(decrypted) == data[2]:
-        print("Message Valid!")
+    if data[2] == "NULL":
+        print("You do not have a hash file. this may be invalid.")
     else:
-        print("Something is wrong\nEither you have not successfully decrypted it\nor the file is not authentic.")
-
+        if find_hash(decrypted) == data[2]:
+            print("Message Valid!")
+        else:
+            print("Something is wrong\nEither you have not successfully decrypted it\nor the file is not authentic.")
     return
 
 
@@ -163,8 +165,11 @@ def get_decrypt_input():
         elif choice <= len(localMsgs):
             with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
-            with io.open("hshs/_hash_{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as ofile:
-                ohash = ofile.read()
+            if os.path.isfile("hshs/_hash_{}".format(localMsgs[choice - 1])):
+                with io.open("hshs/_hash_{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as ofile:
+                    ohash = ofile.read()
+            else:
+                ohash = "NULL"
             break
         else:
             print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
