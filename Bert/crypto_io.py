@@ -12,8 +12,9 @@ from Diff_Hell import find_shared_key as dh_shared_key, apply_shift as dh_shift,
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
 dh_base = 8
 dh_mod = 29
-dh_private_key = 49
+dh_private_key = 66
 dh_public_key = dh_base ** dh_private_key % dh_mod
+print("DH Public Key: {}".format(dh_public_key))
 
 def main():
     # Feel free to change this intro msg to whatever you want
@@ -84,8 +85,7 @@ def encrypt():
             encrypted = "\n".join(str(s) for s in encrypted)
             break
         elif cypher == 3:
-            msg_public_key = dh_base ** data[1] % dh_mod
-            shared_key = dh_shared_key(dh_private_key, msg_public_key)
+            shared_key = dh_shared_key(dh_private_key, data[1])
             encrypted = dh_shift(data[0], shared_key)
             break
         elif cypher == 0:
@@ -133,7 +133,7 @@ def decrypt():
             decrypted = block_rebuild(chunk_list)
             break
         elif cypher == 3:
-            shared_key = dh_shared_key(data[1], dh_public_key)
+            shared_key = dh_shared_key(dh_private_key, data[1])
             decrypted = dh_unshift(data[0], shared_key)
             break
         elif cypher == 0:
