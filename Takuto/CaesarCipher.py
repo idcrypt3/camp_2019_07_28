@@ -1,10 +1,29 @@
-def encode(message):
-    result = ""
-    for i in range(len(message)):
-        char = message[i]
-        result +=chr(ord(char)+3)
-    return result
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+partialOne = ""
+partialTwo = ""
+newAlphabet = ""
+message = input("Please enter a secret message:")
+message = input("...").lower()
+key = input("Please enter a number to shift by:")
+key = int(input("..."))
 
-message=input("please enter a secret message:")
-print(encode(message))
+if key == 0:
+    newAlphabet = alphabet
+elif key > 0:
+    partialOne = alphabet[:key]
+    partialTwo = alphabet[key:]
+    newAlphabet = partialTwo + partialOne
+else:
+    partialOne = alphabet[:(26 + key)]
+    partialTwo = alphabet[(26 + key):]
+    newAlphabet = partialTwo + partialOne
+
+newMessage = ""
+for i in range(0,len(message)):
+    index = alphabet.find(message[i])
+if index < 0:
+    newMessage += message[i]
+else:
+    newMessage += newAlphabet[index]
+
 

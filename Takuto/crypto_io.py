@@ -3,7 +3,7 @@ import os, io
 # uncomment the 3 lines below and replace the names of your files (do not include .py) and function defs
 # leave "as name" as-is; this renames your functions so they are all compatible with this program,
 # regardless of what you named them
-from CaesarCipher import encode as shift_cypher
+from CaesarCipher import encrypt as shift_cypher
 from BlockCipher import pad_message as block_pad, rebuild_message as block_rebuild
 from BlockCipher import apply_rotate as block_shift, undo_rotation as block_unshift
 from DiffieHellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
@@ -12,9 +12,9 @@ from DiffieHellman import find_shared_key as dh_shared_key, apply_shift as dh_sh
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
 dh_base = 8
 dh_mod = 29
-dh_private_key = 49
+dh_private_key = 203
 dh_public_key = dh_base ** dh_private_key % dh_mod
-
+print("DH pub key: {}".format(dh_public_key))
 
 def main():
     # Feel free to change this intro msg to whatever you want
@@ -75,8 +75,7 @@ def encrypt():
             encrypted = "\n".join(str(s) for s in encrypted)
             break
         elif cypher == 3:
-            msg_public_key = dh_base ** data[1] % dh_mod
-            shared_key = dh_shared_key(dh_private_key, msg_public_key)
+            shared_key = dh_shared_key(dh_private_key, data[1])
             encrypted = dh_shift(data[0], shared_key)
             break
         elif cypher == 0:
