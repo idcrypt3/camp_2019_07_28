@@ -86,10 +86,10 @@ def encrypt():
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
-    print(find_hash(data[0].strip()))
-    print(data[0])
-    f = open("hshs/hshs.txt", "a+")
-    f.write(file_name + ".txt\n" + find_hash(data[0].strip()) + "\n")
+#    print("find_hash(data[0].strip): \"{}\"".format(find_hash(data[0].strip())))
+#    print(data[0])
+#    f = open("hshs/hshs.txt", "a+")
+#    f.write(file_name + ".txt\n" + find_hash(data[0].strip()) + "\n")
 #   with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
 #        shash.write(find_hash(data[0]))
     print("Your message was successfully encrypted!\n")
@@ -131,16 +131,17 @@ def decrypt():
             return
 
     print("The decrypted message is:\n{}".format(decrypted))
-    if data[2] == "NULL":
-        print("You do not have a hash file. this may be invalid.")
-    else:
-        print(find_hash(decrypted))
-        print(data[2])
-        if find_hash(decrypted) == data[2]:
-            print("Message Valid!")
-        else:
-            print("Something is wrong\nEither you have not successfully decrypted it\nor the file is not authentic.")
-    storepass = input("is this the correct decryption? Y/N :")
+#    if data[2] == "NULL":
+#        print("You do not have a hash file. this may be invalid.")
+#    else:
+#        print("Decrypted.strip(): \"{}\"".format(decrypted.strip()))
+#        print(find_hash(decrypted))
+#        print(data[2])
+#        if find_hash(decrypted.strip()) == data[2]:
+#            print("Message Valid!")
+#        else:
+#            print("Something is wrong\nEither you have not successfully decrypted it\nor the file is not authentic.")
+    storepass = input("Would you like to save this in keychain? Y/N :")
     if storepass == "Y" or storepass == "y":
         l = open("hshs/keychain.txt", "a+")
         l.write(data[3] + ", " + str(cypher) + ", " + str(data[1]) + "\n")
@@ -182,12 +183,12 @@ def get_decrypt_input():
             with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = file.read()
             ohash = "NULL"
-            with io.open("hshs/hshs.txt", 'r', encoding="utf-8") as sheesh:
-                hsh = sheesh.read()
-            hshs = hsh.split("\n")
-            for i in range(0, len(hshs), 2):
-                if hshs[i] == localMsgs[choice - 1]:
-                    ohash = (hshs[i + 1]).strip()
+#            with io.open("hshs/hshs.txt", 'r', encoding="utf-8") as sheesh:
+#                hsh = sheesh.read()
+#            hshs = hsh.split("\n")
+#            for i in range(0, len(hshs), 2):
+#                if hshs[i] == localMsgs[choice - 1]:
+#                    ohash = (hshs[i + 1]).strip()
             break
         else:
             print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
