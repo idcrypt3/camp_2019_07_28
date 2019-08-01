@@ -20,7 +20,7 @@ public_base = 8
 public_modulus = 29
 alice_private_key = 5
 bob_private_key = 7
-alice_message = "Hello Bob"
+alice_message = "How is your day going?"
 alice_public_key = public_base**alice_private_key%public_modulus
 bob_public_key = public_base ** bob_private_key % public_modulus
 alice_shared_key = find_shared_key(alice_private_key, bob_public_key)
@@ -29,3 +29,5 @@ print(alice_cipher)
 bob_shared_key = find_shared_key(bob_private_key, alice_public_key)
 bob_message = remove_shift(alice_cipher, bob_shared_key)
 print(bob_message)
+
+print("test 2.txt: {}".format(remove_shift("tqxx{", 8 ** 49 % 29)))
