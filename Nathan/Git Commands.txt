@@ -1,7 +1,8 @@
-cd Documents/GitHub/camp_2019_07_28/
+cd My Documents/GitHub/camp_2019_07_28/
 git status
 git pull
 git push
 git reset
 git add Nathan/"File Name"
 git add --all
+git status

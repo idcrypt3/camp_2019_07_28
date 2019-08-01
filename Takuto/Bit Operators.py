@@ -13,6 +13,6 @@ F=A^B
 print(bin(F))
 
 G=A<<1
-H=A..2
+H=A**2
 I=A<<2
 print(G,H,I)

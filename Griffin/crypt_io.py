@@ -86,11 +86,12 @@ def encrypt():
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
-    #print(find_hash(data[0]))
+    print(find_hash(data[0].strip()))
+    print(data[0])
     f = open("hshs/hshs.txt", "a+")
     f.write(file_name + ".txt\n" + find_hash(data[0].strip()) + "\n")
-    #with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
-    #    shash.write(find_hash(data[0]))
+#   with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
+#        shash.write(find_hash(data[0]))
     print("Your message was successfully encrypted!\n")
 
 
@@ -173,20 +174,20 @@ def get_decrypt_input():
         elif choice <= len(localMsgs):
             with io.open("hshs/keychain.txt", "r", encoding="utf-8") as kcn:
                 keychain = ((kcn.read()).strip()).split("\n")
-            if any(localMsgs[choice - 1] in s for s in keychain):
+            if any(localMsgs[choice - 1] in b for b in keychain):
                 print("You have one or more keys for this file.")
                 for g in range(0, len(keychain)):
                     if localMsgs[choice - 1] in keychain[g]:
                         print(keychain[g])
             with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
-                msg = (file.read()).strip()
+                msg = file.read()
             ohash = "NULL"
-            with io.open("hshs/hshs.txt", 'r', encoding="utf-8") as file:
-                hsh = (file.read()).strip()
+            with io.open("hshs/hshs.txt", 'r', encoding="utf-8") as sheesh:
+                hsh = sheesh.read()
             hshs = hsh.split("\n")
             for i in range(0, len(hshs), 2):
                 if hshs[i] == localMsgs[choice - 1]:
-                    ohash = hshs[i + 1]
+                    ohash = (hshs[i + 1]).strip()
             break
         else:
             print("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))

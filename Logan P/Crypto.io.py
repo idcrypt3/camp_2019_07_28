@@ -3,16 +3,16 @@ import os, io
 # uncomment the 3 lines below and replace the names of your files (do not include .py) and function defs
 # leave "as name" as-is; this renames your functions so they are all compatible with this program,
 # regardless of what you named them
-from code import shift_cipher as shift_cypher
-from BLOCK_cIPHER import pad_message as block_pad, rebuild_message as block_rebuild
-from BLOCK_cIPHER import apply_shift as block_shift, undo_shift as block_unshift
-from Diff_Hell import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
+from Alphabet import cesar_cipher as shift_cypher
+from BlockCipher import pad_message as block_pad, rebuild_message as block_rebuild
+from BlockCipher import apply_rotate as block_shift, undo_rotate as block_unshift
+from DiffieHellman import find_shared_key as dh_shared_key, apply_shift as dh_shift, remove_shift as dh_unshift
 
 # here I set the private key used in Diffie-Hellman encryptions. Feel free to change it.
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
 dh_base = 8
 dh_mod = 29
-dh_private_key = 66
+dh_private_key = 47
 dh_public_key = dh_base ** dh_private_key % dh_mod
 print("DH Public Key: {}".format(dh_public_key))
 
@@ -25,18 +25,18 @@ def main():
 
     # infinite loop runs until the user quits
     while True:
-        print() # newline for readability
+        print()  # newline for readability
         choice = input("Type 1 to encrypt, 2 to decrypt, or 0 to quit: ")
-        
-        try: 
+
+        try:
             choice = int(choice)
         except:
             white = "\x1b[0m"
             escape = "\x1b["
-            color1 = "31m"
+            color = "31m"
             text = "Sorry, that is not a valid choice."
-            text_color = escape + color1 + text + white
-            print(text_color)
+            colored_text = escape + color + text + white
+            print(colored_text)
             continue
 
         if choice == 1:
@@ -50,11 +50,14 @@ def main():
         else:
             white = "\x1b[0m"
             escape = "\x1b["
-            color1 = "31m"
+            color = "31m"
             text = ("Sorry, '{}' is not a valid choice. Pick 1, 2, or 0.".format(choice))
-            text_color = escape + color1 + text + white
-            print(text_color)
+            colored_text = escape + color + text + white
+            print(colored_text)
             continue
+
+            continue
+
 
 def encrypt():
     print("Preparing to encrypt...")
@@ -65,12 +68,12 @@ def encrypt():
         if "{}.txt".format(file_name) in os.listdir("msgs"):
             white = "\x1b[0m"
             escape = "\x1b["
-            color1 = "31m"
+            color = "31m"
             text = "Sorry, there is already a secret message with that name. Choose another."
-            text_color = escape + color1 + text + white
-            print(text_color)
-            break
-        
+            colored_text = escape + color + text + white
+            print(colored_text)
+            continue
+
         cypher = input(
             "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): ")
 
@@ -79,10 +82,10 @@ def encrypt():
         except ValueError:
             white = "\x1b[0m"
             escape = "\x1b["
-            color1 = "31m"
-            text = ("Sorry, {} is not a valid choice. Pick 1, 2, or 3.".format(cypher))
-            text_color = escape + color1 + text + white
-            print(text_color)
+            color = "31m"
+            text = ("Sorry, '{}' is not a valid choice. Pick 1, 2, or 3.".format(cypher))
+            colored_text = escape + color + text + white
+            print(colored_text)
             continue
 
         if cypher == 1:
@@ -97,23 +100,31 @@ def encrypt():
             shared_key = dh_shared_key(dh_private_key, data[1])
             encrypted = dh_shift(data[0], shared_key)
             break
-        elif cypher >= 3:
-            print("choose 1, 2 or 3")
+        else:
+            white = "\x1b[0m"
+            escape = "\x1b["
+            color = "31m"
+            text = ("Sorry, '{}' is not a valid choice. Pick 1, 2, or 3.".format(cypher))
+            colored_text = escape + color + text + white
+            print(colored_text)
             continue
+
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
-        white = "\x1b[0m"
-        escape = "\x1b["
-        color1 = "37m"
-        text = ("Your message was successfully encrypted!\n")
-        text_color = escape + color1 + text + white
-        print(text_color)
+    white = "\x1b[0m"
+    escape = "\x1b["
+    color = "92m"
+    text = "Your message was successfully encrypted!\n"
+    colored_text = escape + color + text + white
+    print(colored_text)
+
 
 def get_encrypt_input():
     msg = input("Please enter your secret message: ")
     key = get_key()
     return msg, key
+
 
 def decrypt():
     print("Preparing to decrypt...")
@@ -128,10 +139,10 @@ def decrypt():
         except ValueError:
             white = "\x1b[0m"
             escape = "\x1b["
-            color1 = "31m"
-            text = ("Sorry, {} is not a valid choice. Pick 1, 2, or 3.".format(cypher))
-            text_color = escape + color1 + text + white
-            print(text_color)
+            color = "31m"
+            text = ("Sorry, '{}' is not a valid choice. Pick 1, 2, or 3.".format(cypher))
+            colored_text = escape + color + text + white
+            print(colored_text)
             continue
 
         if cypher == 1:
@@ -143,9 +154,16 @@ def decrypt():
             decrypted = block_rebuild(chunk_list)
             break
         elif cypher == 3:
+            #msg_public_key = dh_base ** data[1] % dh_mod
             shared_key = dh_shared_key(dh_private_key, data[1])
             decrypted = dh_unshift(data[0], shared_key)
             break
+
+            # encryption
+            #msg_public_key = dh_base ** data[1] % dh_mod
+            #shared_key = dh_shared_key(dh_private_key, msg_public_key)
+            #encrypted = dh_shift(data[0], shared_key)
+
         elif cypher == 0:
             return
 
@@ -153,10 +171,11 @@ def decrypt():
 
     return
 
+
 def get_decrypt_input():
     localMsgs = os.listdir("msgs")
     for i in range(len(localMsgs)):
-        n = i + 1   # '0' is the choice for manual input, so we offset the count by +1
+        n = i + 1  # '0' is the choice for manual input, so we offset the count by +1
         padding = " "
         if n <= 99:
             padding += " "
@@ -173,12 +192,11 @@ def get_decrypt_input():
         except ValueError:
             white = "\x1b[0m"
             escape = "\x1b["
-            color1 = "31m"
-            text1 = ("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
-            text_color1 = escape + color1 + text1 + white
-            print(text_color1)
+            color = "31m"
+            text = ("Sorry, {} is not a valid choice. Pick a number 1 through {}.".format(choice, len(localMsgs)))
+            colored_text = escape + color + text + white
+            print(colored_text)
             continue
-
         if choice == 0:
             msg = input("Manually enter the encrypted message: ").strip()
             break
@@ -188,28 +206,33 @@ def get_decrypt_input():
             break
         else:
             white = "\x1b[0m"
-            csi2 = "\x1b["
-            color2 = "31m"
-            text2 = ("Sorry, {} is not a valid choice. Pick between 0 and {}.".format(choice, len(localMsgs)))
-            text_color2 = csi2 + color2 + text2 + white
-            print(text_color2)
+            escape = "\x1b["
+            color = "31m"
+            text = ("Sorry, {} is not a valid choice. Pick a number 1 through {}.".format(choice, len(localMsgs)))
+            colored_text = escape + color + text + white
+            print(colored_text)
+            continue
+
     key = get_key()
     return msg, key
+
 
 def get_key():
     while True:
         try:
-            key = int(input("Please enter your secret key, your key should be smaller or equals to 26 if you want to "
-                            "do Caeser Cipher:"))
+            key = int(input("Please enter your secret key: "))
             break
         except ValueError:
-            text = "The secret key should be a number. Try again. "
-            csi = "\x1b["
-            color = "31m"
             white = "\x1b[0m"
-            color_text = csi + color + text + white
-            print(color_text)
+            escape = "\x1b["
+            color = "31m"
+            text = "The secret key should be a number. Try again."
+            colored_text = escape + color + text + white
+            print(colored_text)
+            continue
+
     return key
+
 
 # This line automatically runs the main def when you start the program.
 if __name__ == "__main__":
@@ -217,8 +240,9 @@ if __name__ == "__main__":
 
 # Ideas for new features:
 # - Include your name or contact info in the comments and/or opening scroll.
-# - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
-# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).
+# - Write some messages or stories and encrypt and save them to dids to discover.
+# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes)sk for
+# your family and friends.
 # - This program includes functionality you haven't seen in the form of file I/O, string formatting, and imported
 # modules. See if you understand what's going on and reference the online documentation if you don't.
 # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
