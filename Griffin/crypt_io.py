@@ -171,11 +171,18 @@ def get_decrypt_input():
             msg = input("Manually enter the encrypted message: ").strip()
             break
         elif choice <= len(localMsgs):
+            with io.open("hshs/keychain.txt", "r", encoding="utf-8") as kcn:
+                keychain = ((kcn.read()).strip()).split("\n")
+            if any(localMsgs[choice - 1] in s for s in keychain):
+                print("You have one or more keys for this file.")
+                for g in range(0, len(keychain)):
+                    if localMsgs[choice - 1] in keychain[g]:
+                        print(keychain[g])
             with io.open("msgs/{}".format(localMsgs[choice - 1]), 'r', encoding="utf-8") as file:
                 msg = (file.read()).strip()
             ohash = "NULL"
             with io.open("hshs/hshs.txt", 'r', encoding="utf-8") as file:
-                hsh = file.read()
+                hsh = (file.read()).strip()
             hshs = hsh.split("\n")
             for i in range(0, len(hshs), 2):
                 if hshs[i] == localMsgs[choice - 1]:
