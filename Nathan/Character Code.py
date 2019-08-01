@@ -4,6 +4,6 @@ for i in numbers:
     text += chr(i)
 print(text)
 csi = "\x1b["
-color = "36m"
+color = "37m"
 colored_text = csi + color + text
 print(colored_text)

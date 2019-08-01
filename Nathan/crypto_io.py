@@ -13,14 +13,15 @@ from Diffie_Hellman import find_shared_key as dh_shared_key, apply_shift as dh_s
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
 dh_base = 8
 dh_mod = 29
-dh_private_key = 49
+dh_private_key = 458
 dh_public_key = dh_base ** dh_private_key % dh_mod
+print(dh_public_key)
 
 csi = "\x1b["
 colorw = "30m"
 colorr = "31m"
 colorg = "36m"
-
+colorc = "37m"
 text1 = "Hello iD Campers, Parents, and Staff!"
 text2 = "Welcome to the iD Cryptography Package, cryptoIO!!"
 text3 = "Here you can encrypt messages and save them for others to read."
@@ -33,12 +34,14 @@ text9 = "Sorry, '{}' is not a valid choice. Pick 1, 2, or 0."
 text10 = "Preparing to encrypt..."
 text11 = "Please enter your message's name: "
 text12 = "Sorry, there is already a secret message with that name. Choose another."
-text13 = "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): "
+text13 = "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher" \
+         " (1, 2, or 3): "
 text14 = "Sorry, {} is not a valid choice. Pick 1, 2, or 3."
 text15 = "Your message was successfully encrypted!\n"
 text16 = "Please enter your secret message: "
 text17 = "Preparing to decrypt..."
-text18 = "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher (1, 2, or 3): "
+text18 = "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher" \
+         " (1, 2, or 3): "
 text19 = "Sorry, {} is not a valid choice. Pick 1, 2, or 3."
 text20 = "The decrypted message is:\n'{}'"
 text21 = "Please choose a message from above to decrypt (or, type 0 for manual entry): "
@@ -49,6 +52,7 @@ text25 = "Please enter your secret key: "
 text26 = "The secret key should be a number. Try again. "
 text27 = "Name: Nathan C."
 text28 = "Position: Meme master."
+text29 = "B, 51 Backwards."
 
 colored_text1 = csi + colorw + text1
 colored_text2 = csi + colorw + text2
@@ -78,6 +82,7 @@ colored_text25 = csi + colorw + text25
 colored_text26 = csi + colorr + text26
 colored_text27 = csi + colorw + text27
 colored_text28 = csi + colorw + text28
+colored_text29 = csi + colorc + text29
 
 
 def prgreen(skk): print("\033[1;32;00m{}".format(skk))
@@ -89,6 +94,7 @@ def main():
     print(colored_text2)
     print(colored_text3)
     print(colored_text4)
+    print(colored_text29)
 
     # infinite loop runs until the user quits
     while True:
@@ -143,8 +149,8 @@ def encrypt():
             encrypted = "\n".join(str(s) for s in encrypted)
             break
         elif cypher == 3:
-            msg_public_key = dh_base ** data[1] % dh_mod
-            shared_key = dh_shared_key(dh_private_key, msg_public_key)
+
+            shared_key = dh_shared_key(dh_private_key, data[1])
             encrypted = dh_shift(data[0], shared_key)
             break
         elif cypher == 0:
@@ -245,9 +251,9 @@ if __name__ == "__main__":
 
 
 # Ideas for new features:
-# - Include your name or contact info in the comments and/or opening scroll.()
+    # - Include your name or contact info in the comments and/or opening scroll.
 # - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
-# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).()
+    # - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).
 # - This program includes functionality you haven't seen in the form of file I/O, string formatting, and imported
 # modules. See if you understand what's going on and reference the online documentation if you don't.
 # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
@@ -256,8 +262,8 @@ if __name__ == "__main__":
 # Prevent the user from attempting a Ceaser shift greater than +-26, or use mod (%) to correct it
 
 # Advanced features:
-# - Create a puzzle for users to solve by slowly ramping up the difficulty (e.g., the key to a block cypher could be
-# written in a ceaser cypher (as a word - remember, our ceaser cypher only substitutes letters), and that block cypher
+    # - Create a puzzle for users to solve by slowly ramping up the difficulty (e.g., the key to a block cypher could be
+    # written in a ceaser cypher (as a word - remember, our ceaser cypher only substitutes letters), and that block cypher
 # could have a clue to a Diffie-Hellman cypher, and...)
 # - Display the checksum or hash of messages as they are encrypted and decrypted.
 # You could even save the checksum/hash alongside the messages, so users know if a file has been modified.
