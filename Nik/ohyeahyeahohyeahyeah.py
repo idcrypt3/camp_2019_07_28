@@ -10,6 +10,19 @@ from DiffieHelman import find_shared_key as dh_shared_key, apply_shift as dh_shi
 
 # here I set the private key used in Diffie-Hellman encryptions. Feel free to change it.
 # the public_base is set to 8 and public_modulus 29, as on GamePlan. You can change those too.
+
+numbers = [
+    0x69, 0x44, 0x54, 0x65, 0x63, 0x68
+]
+text = ""
+
+
+# Note to editor: Add the below code for the 2nd code snippet
+csi = "\x1b["
+color = "31m"
+colored_text = csi + color + text
+print(colored_text)
+
 dh_base = 8
 dh_mod = 29
 dh_private_key = 97
@@ -108,7 +121,7 @@ def decrypt():
             decrypted = shift_cypher(data[0], -data[1])
             break
         elif cypher == 2:
-            print(data[0].split("\n"))
+
             chunk_list = list(map(int, data[0].split("\n")))
             chunk_list = block_unshift(chunk_list, data[1])
             decrypted = block_rebuild(chunk_list)

@@ -86,12 +86,8 @@ def encrypt():
 
     with io.open("msgs/{}.txt".format(file_name), 'w+', encoding="utf-8") as file:
         file.write(encrypted)
-    print("find_hash(data[0].strip): \"{}\"".format(find_hash(data[0].strip())))
-    print(data[0])
     f = open("hshs/hshs.txt", "a+")
-    f.write(file_name + ".txt\n" + find_hash(data[0].strip()) + "\n")
-#   with io.open("hshs/_hash_{}.txt".format(file_name), 'w+', encoding="utf-8") as shash:
-#        shash.write(find_hash(data[0]))
+    f.write(file_name + ".txt\n" + find_hash(data[0]) + "\n")
     print("Your message was successfully encrypted!\n")
 
 
@@ -134,9 +130,6 @@ def decrypt():
     if data[2] == "NULL":
         print("You do not have a hash file. this may be invalid.")
     else:
-        print("Decrypted.strip(): \"{}\"".format(decrypted.strip()))
-        print(find_hash(decrypted))
-        print(data[2])
         if find_hash(decrypted.strip()) == data[2]:
             print("Message Valid!")
         else:
