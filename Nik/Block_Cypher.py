@@ -40,12 +40,12 @@ def undo_rotation(cipher_list, key, block_size=4):
         cipher = (chunk >> (bit_max - key)) + carry
         message_list.append(cipher)
     return message_list
-plaintext = "id tech camps!"
-key = 10
-text_list = pad_message(plaintext)
-cipher_list = apply_rotate(text_list, key)
-message_list = undo_rotation(cipher_list, key)
-cipher = rebuild_message(message_list)
-print(cipher)
+
+    key = 10
+    text_list = pad_message(plaintext)
+    cipher_list = apply_rotate(text_list, key)
+    message_list = undo_rotation(cipher_list, key)
+    cipher = rebuild_message(message_list)
+    print(cipher)
 
 
