@@ -234,12 +234,23 @@ def get_key():
 
 
 # This line automatically runs the main def when you start the program.
-password= input("What's the password?")
+password_guess = False
 
-if password ==  "run":
+while password_guess == False:
+    password = input("What's the password?")
 
-    if __name__ == "__main__":
-        main()
+    if password == "run":
+        password_guess = True
+
+        if __name__ == "__main__":
+            main()
+    else:
+        white = "\x1b[0m"
+        escape = "\x1b["
+        color = "31m"
+        text = ("Incorrect password, try again.")
+        colored_text = escape + color + text + white
+        print(colored_text)
 
 # Ideas for new features:
 # - Include your name or contact info in the comments and/or opening scroll.
