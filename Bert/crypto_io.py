@@ -18,10 +18,11 @@ print("DH Public Key: {}".format(dh_public_key))
 
 def main():
     # Feel free to change this intro msg to whatever you want
-    print("Hello iD Campers, Parents, and Staff!")
+    print("Hello parents!")
     print("Welcome to the iD Cryptography Package, cryptoIO!!")
     print("Here you can encrypt messages and save them for others to read.")
     print("But they will only be able to decrypt them if you (remember and) share the secret keys!")
+    print("Try to decrypt the messages from the students")
 
     # infinite loop runs until the user quits
     while True:
