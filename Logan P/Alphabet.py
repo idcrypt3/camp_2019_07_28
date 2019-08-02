@@ -12,10 +12,11 @@ def cesar_cipher(message, key):
     elif key > 0:
         partialOne = alphabet[:key]
         partialTwo = alphabet[key:]
+        newAlphabet = partialTwo + partialOne
     else:
         partialOne = alphabet[:(26 + key)]
         partialTwo = alphabet[(26 + key):]
-    newAlphabet = partialOne + partialTwo
+        newAlphabet = partialTwo + partialOne
 
     for i in range(0, len(message)):
         index = alphabet.find(message[i])
