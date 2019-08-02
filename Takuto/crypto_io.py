@@ -19,8 +19,9 @@ print("DH pub key: {}".format(dh_public_key))
 def main():
     # Feel free to change this intro msg to whatever you want
     print("Hello iD Campers, Parents, and Staff!")
+    print("My name is Takuto. I play basketball.")
     print("Welcome to the iD Cryptography Package, cryptoIO!!")
-    print("Here you can encrypt messages and save them for others to read.")
+    print("Here you can encrypt and decrypt messages and save them for others to read.")
     print("But they will only be able to decrypt them if you (remember and) share the secret keys!")
 
     # infinite loop runs until the user quits
@@ -178,7 +179,6 @@ if __name__ == "__main__":
 # Ideas for new features:
 # - Include your name or contact info in the comments and/or opening scroll.
 # - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
-# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).
 # - This program includes functionality you haven't seen in the form of file I/O, string formatting, and imported
 # modules. See if you understand what's going on and reference the online documentation if you don't.
 # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
@@ -193,3 +193,6 @@ if __name__ == "__main__":
 # - Display the checksum or hash of messages as they are encrypted and decrypted.
 # You could even save the checksum/hash alongside the messages, so users know if a file has been modified.
 # - Expand your cyphers with more options, or write a new one from internet tutorials.
+
+#finished
+# - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).

@@ -12,6 +12,11 @@ while len(phone_book) < max_size - 1:
     phone_book.append(("", 0000000000))
 phone_book.append(("Steven", 1420573857))
 
+sorted_book = sorted(phone_book, key=lambda phone_book: phone_book[0])
+while sorted_book[0][0] == "":
+    del(sorted_book[0])
+
+
 search_name = input("Lookup which number?")
 search_count = 0
 for i in range(len(phone_book)):
@@ -23,10 +28,6 @@ for i in range(len(phone_book)):
     if search_count == max_size:
         print("Name not found")
 
-sorted_book = sorted(phone_book, key=lambda phone_book:
-                     phone_book[0])
-while sorted_book[0][0] == "":
-    del(sorted_book[0])
 
 search_index = len(sorted_book) // 2
 search_max = len(sorted_book) -1
@@ -54,12 +55,13 @@ for i in range(len(phone_book)):
     digest = new_hash(name)
     if digest == -1:
         continue
-        phone_hash.append(digest)
-        new_index = digest
-while hashed_book[new_index]!=("", 0000000000):
-    new_index = (new_index + 1) % max_size
-hashed_book[new_index] = [phone_book[i]
-hash_index = new_hash(search_name)
+    phone_hash.append(digest)
+    new_index = digest
+    while hashed_book[new_index]!=("", 0000000000):
+        new_index = (new_index + 1) % max_size
+    hashed_book[new_index] = [phone_book[i]
+
+search_name = input("Lookup which number?")
 search_count = 0
 for i in range(len(hashed_book)):
     search_count += 1
