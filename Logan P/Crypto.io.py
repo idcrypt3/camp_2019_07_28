@@ -18,8 +18,7 @@ print("DH Public Key: {}".format(dh_public_key))
 
 def main():
     # Feel free to change this intro msg to whatever you want
-    print("Hello.")
-    print("This is a encryption and decryption program called Crypto.io.")
+    print("Hello, this is a encryption and decryption program called Crypto.io.")
     print("You can use this software to encrypt and decrypt messages to send to your family and friends, ")
     print("But they will only be able to decrypt them if you remember and share the secret keys!")
 
@@ -235,8 +234,12 @@ def get_key():
 
 
 # This line automatically runs the main def when you start the program.
-if __name__ == "__main__":
-    main()
+password= input("What's the password?")
+
+if password ==  "run":
+
+    if __name__ == "__main__":
+        main()
 
 # Ideas for new features:
 # - Include your name or contact info in the comments and/or opening scroll.
