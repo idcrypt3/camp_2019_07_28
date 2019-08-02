@@ -34,14 +34,12 @@ text9 = "Sorry, '{}' is not a valid choice. Pick 1, 2, or 0."
 text10 = "Preparing to encrypt..."
 text11 = "Please enter your message's name: "
 text12 = "Sorry, there is already a secret message with that name. Choose another."
-text13 = "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher" \
-         " (1, 2, or 3): "
+text13 = "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\n0   : Return\nPlease select a cypher (1, 2, 3, or 0): "
 text14 = "Sorry, {} is not a valid choice. Pick 1, 2, or 3."
 text15 = "Your message was successfully encrypted!\n"
 text16 = "Please enter your secret message: "
 text17 = "Preparing to decrypt..."
-text18 = "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\nPlease select a cypher" \
-         " (1, 2, or 3): "
+text18 = "1   : Ceaser (shift) Cypher\n2   : Block Cypher\n3   : Diffie-Hellman Cypher\n0   : Return\nPlease select a cypher (1, 2, 3, or 0): "
 text19 = "Sorry, {} is not a valid choice. Pick 1, 2, or 3."
 text20 = "The decrypted message is:\n'{}'"
 text21 = "Please choose a message from above to decrypt (or, type 0 for manual entry): "
@@ -85,9 +83,6 @@ colored_text27 = csi + colorw + text27
 colored_text28 = csi + colorw + text28
 colored_text29 = csi + colorc + text29
 colored_text30 = csi + colorc + text30
-
-
-def prgreen(skk): print("\033[1;32;00m{}".format(skk))
 
 
 def main():
@@ -254,22 +249,21 @@ if __name__ == "__main__":
 
 
 # Ideas for new features:
-# - Include your name or contact info in the comments and/or opening scroll.()
     # - Include your name or contact info in the comments and/or opening scroll.
 # - Write some messages or stories and encrypt and save them to disk for your family and friends to discover.
     # - Include color codes - red for failed encryption, green for passed (see the lesson Hexadecimal\Character Codes).
     # - Include your name or contact info in the comments and/or opening scroll.
 # - This program includes functionality you haven't seen in the form of file I/O, string formatting, and imported
 # modules. See if you understand what's going on and reference the online documentation if you don't.
-# - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
-# rather than forcing them to stick with the choice to encrypt or decrypt, even if they change their mind). Try expand-
-# ing it!
+    # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
+    # rather than forcing them to stick with the choice to encrypt or decrypt, even if they change their mind). Try expand-
+    # ing it!
 # Prevent the user from attempting a Ceaser shift greater than +-26, or use mod (%) to correct it
 
 # Advanced features:
     # - Create a puzzle for users to solve by slowly ramping up the difficulty (e.g., the key to a block cypher could be
     # written in a ceaser cypher (as a word - remember, our ceaser cypher only substitutes letters), and that block cypher
-# could have a clue to a Diffie-Hellman cypher, and...)
+    # could have a clue to a Diffie-Hellman cypher, and...)
 # - Display the checksum or hash of messages as they are encrypted and decrypted.
 # You could even save the checksum/hash alongside the messages, so users know if a file has been modified.
 # - Expand your cyphers with more options, or write a new one from internet tutorials.
