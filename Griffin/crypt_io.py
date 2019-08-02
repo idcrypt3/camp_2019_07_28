@@ -213,12 +213,19 @@ if __name__ == "__main__":
 # - Errors are handled, but the user navigation could be more friendly (e.g. allowing users to return to a previous menu
 # rather than forcing them to stick with the choice to encrypt or decrypt, even if they change their mind). Try expand-
 # ing it!
-# Prevent the user from attempting a Ceaser shift greater than +-26, or use mod (%) to correct it
+# - Prevent the user from attempting a Ceaser shift greater than +-26, or use mod (%) to correct it --done--
 
 # Advanced features:
 # - Create a puzzle for users to solve by slowly ramping up the difficulty (e.g., the key to a block cypher could be
 # written in a ceaser cypher (as a word - remember, our ceaser cypher only substitutes letters), and that block cypher
 # could have a clue to a Diffie-Hellman cypher, and...)
 # - Display the checksum or hash of messages as they are encrypted and decrypted.
-# You could even save the checksum/hash alongside the messages, so users know if a file has been modified.
+# You could even save the checksum/hash alongside the messages, so users know if a file has been modified. --done--
 # - Expand your cyphers with more options, or write a new one from internet tutorials.
+
+# what i did:
+# - Automatically saves all hashes to a file, and automatically verifies decrypted files
+# - Prompts users to save keys, encryption formats, and file names to a keychain, and prints these keys when decrypting
+# a file with the same name
+# - mods a cesar cipher that is beyond +-26 as mentioned above
+# - general fixes to the Diffe-Hellman cypher, which was coded wrongly by the original file
