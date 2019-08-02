@@ -19,7 +19,8 @@ def rebuild_message(message_list, block_size=4):
         chunk = message_list[i]
         for c in range(block_size):
             number = (chunk >> (8 * (block_size - 1 - c))) % 2**8
-            message += chr(number)
+            if number != 0:
+                message += chr(number)
     return message
 
 def apply_rotate(message_list, key, block_size=4):
